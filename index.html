@@ -3,72 +3,219 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DMSOLUCIONES | Ingeniería de Datos & Optimización</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <title>DMSoluciones | Ingeniería de Procesos y Datos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root { --main-bg: #f5f5f5; --text-dark: #1a1a1a; --primary: #004a99; --secondary: #25D366; --gray-text: #666; }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Inter', sans-serif; background-color: var(--main-bg); color: var(--text-dark); overflow-x: hidden; scroll-behavior: smooth; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        :root {
+            --primary-dark: #121212;
+            --accent-blue: #004a99; /* Azul Industrial */
+            --bg-gray: #f8f9fa;
+            --text-main: #333333;
+            --text-muted: #666666;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            line-height: 1.6;
+            background-color: var(--white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 25px;
+        }
 
         /* --- HEADER & NAV --- */
-        header { position: fixed; top: 0; left: 0; width: 100%; height: 80px; background: rgba(245, 245, 245, 0.95); z-index: 1000; border-bottom: 1px solid #e0e0e0; }
-        nav { display: flex; justify-content: space-between; align-items: center; height: 100%; }
-        .logo-box { border: 2px solid var(--text-dark); padding: 5px 15px; font-weight: 700; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dark); text-decoration: none; }
-        .nav-links { display: flex; list-style: none; gap: 30px; font-weight: 500; font-size: 0.9rem; }
-        .nav-links a { text-decoration: none; color: var(--gray-text); transition: color 0.3s; }
-        .nav-links a:hover { color: var(--text-dark); }
+        header {
+            padding: 30px 0;
+            border-bottom: 1px solid #eee;
+        }
 
-        /* --- SECCIONES (Ajustamos padding para el header fijo) --- */
-        section { padding: 120px 0 80px 0; min-height: 80vh; }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-        /* --- SOBRE NOSOTROS (HERO) --- */
-        #sobre-nosotros .hero-content { display: flex; align-items: center; gap: 60px; }
-        .hero-text { flex: 1.2; padding-right: 20px; }
-        .hero-text h1 { font-size: 4rem; font-weight: 700; line-height: 1.1; margin-bottom: 30px; text-transform: uppercase; }
-        .hero-text h1 span { display: block; }
-        .hero-text p.sub-hero { font-size: 1.2rem; color: var(--gray-text); font-weight: 300; max-width: 500px; }
-        .divider { width: 50px; height: 4px; background: var(--text-dark); margin-bottom: 30px; }
-        .hero-image { flex: 0.8; position: relative; }
-        .hero-image img { width: 100%; height: auto; display: block; box-shadow: 10px 10px 30px rgba(0,0,0,0.1); }
-        .ornament { position: absolute; top: -30px; right: -30px; width: 80px; height: 80px; color: var(--text-dark); }
+        .logo {
+            font-weight: 800;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary-dark);
+        }
 
-        /* --- SERVICIOS --- */
-        #servicios .section-title { text-align: center; margin-bottom: 60px; text-transform: uppercase; font-size: 2.5rem; }
-        .servicios-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .servicio-card { background: white; padding: 40px; border-radius: 15px; border: 1px solid #eaeaea; box-shadow: 0 4px 6px rgba(0,0,0,0.02); transition: transform 0.3s, box-shadow 0.3s; }
-        .servicio-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-        .servicio-icon { font-size: 2rem; margin-bottom: 20px; color: var(--primary); }
-        .servicio-card h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 15px; text-transform: uppercase; }
-        .servicio-card p { font-size: 0.95rem; color: var(--gray-text); font-weight: 300; line-height: 1.7; }
+        .logo span {
+            color: var(--accent-blue);
+        }
+
+        /* --- HERO SECTION --- */
+        #hero {
+            padding: 100px 0;
+            background: linear-gradient(to right, #ffffff 50%, #fcfcfc 50%);
+        }
+
+        .hero-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            color: var(--primary-dark);
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 35px;
+            max-width: 500px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 15px 35px;
+            background-color: var(--accent-blue);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #003366;
+        }
+
+        /* --- SECCIÓN SERVICIOS (ESTILO BIOFILM) --- */
+        #servicios {
+            padding: 100px 0;
+            background-color: var(--bg-gray);
+        }
+
+        .section-header {
+            margin-bottom: 60px;
+            border-left: 6px solid var(--accent-blue);
+            padding-left: 25px;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: var(--primary-dark);
+        }
+
+        .servicios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            border: 1px solid #e0e0e0;
+            background-color: #e0e0e0; /* El color de las líneas divisorias */
+            gap: 1px; 
+        }
+
+        .servicio-card {
+            background: var(--white);
+            padding: 60px 45px;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.4s ease;
+        }
+
+        .servicio-card:hover {
+            background: #fafafa;
+            border-bottom: 6px solid var(--accent-blue);
+        }
+
+        .servicio-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--primary-dark);
+            margin-bottom: 25px;
+            min-height: 3rem;
+        }
+
+        .servicio-card p {
+            font-size: 1rem;
+            color: var(--text-main);
+            margin-bottom: 20px;
+        }
+
+        .objetivo-tag {
+            margin-top: auto;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--accent-blue);
+            letter-spacing: 1px;
+        }
 
         /* --- CONTACTO --- */
-        #contacto .contact-wrapper { max-width: 800px; margin: 0 auto; background: white; padding: 60px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); border: 1px solid #eaeaea; text-align: center; }
-        #contacto h2 { font-size: 2.5rem; font-weight: 700; margin-bottom: 20px; text-transform: uppercase; }
-        #contacto p.sub-contact { font-size: 1.1rem; color: var(--gray-text); margin-bottom: 40px; font-weight: 300; }
-        .contact-form { max-width: 500px; margin: 0 auto; }
-        input, textarea { width: 100%; padding: 15px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 10px; font-family: inherit; font-size: 1rem; }
-        input:focus, textarea:focus { outline: none; border-color: var(--primary); }
-        button { background: var(--primary); color: white; border: none; padding: 15px 30px; border-radius: 10px; cursor: pointer; font-weight: 600; width: 100%; font-size: 1rem; text-transform: uppercase; transition: background 0.3s; }
-        button:hover { background: #00377a; }
-        .wsp-block { margin-top: 30px; border-top: 1px solid #eee; padding-top: 30px; display: flex; flex-direction: column; gap: 15px; align-items: center; }
-        .wsp-link { background: var(--secondary); display: inline-flex; align-items: center; justify-content: center; text-decoration: none; color: white; padding: 12px 25px; border-radius: 8px; font-weight: bold; font-size: 1rem; }
+        #contacto {
+            padding: 100px 0;
+            background: var(--white);
+        }
 
-        /* --- FOOTER --- */
-        footer { padding: 40px 0; background: var(--text-dark); color: #888; text-align: center; font-size: 0.85rem; }
+        .contact-flex {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 80px;
+        }
 
-        /* --- RESPONSIVE (Celulares) --- */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            font-family: inherit;
+            background: #f9f9f9;
+        }
+
+        footer {
+            padding: 50px 0;
+            border-top: 1px solid #eee;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .hero-content { flex-direction: column; text-align: center; }
-            .hero-text h1 { font-size: 2.5rem; }
-            .hero-text p.sub-hero { margin: 0 auto; }
-            .divider { margin: 30px auto; }
-            .ornament { width: 60px; height: 60px; top: -20px; right: -20px; }
-            .servicios-grid { grid-template-columns: 1fr; }
-            #contacto .contact-wrapper { padding: 40px; }
-            #contacto h2 { font-size: 2rem; }
-            .logo-box { font-size: 1rem; padding: 3px 10px; }
-            .nav-links { font-size: 0.8rem; gap: 15px; }
+            .hero-flex, .contact-flex { grid-template-columns: 1fr; }
+            .hero-text h1 { font-size: 2.2rem; }
+            .section-header h2 { font-size: 1.8rem; }
         }
     </style>
 </head>
@@ -77,81 +224,93 @@
     <header>
         <div class="container">
             <nav>
-                <a href="#sobre-nosotros" class="logo-box">DMSOLUCIONES</a>
-                <ul class="nav-links">
-                    <li><a href="#sobre-nosotros">SOBRE NOSOTROS</a></li>
-                    <li><a href="#servicios">SERVICIOS</a></li>
-                    <li><a href="#contacto">CONTACTO</a></li>
-                </ul>
+                <div class="logo">DM<span>SOLUCIONES</span></div>
+                <div><a href="#contacto" class="btn-primary" style="padding: 10px 20px; font-size: 0.75rem;">Contacto</a></div>
             </nav>
         </div>
     </header>
 
-    <section id="sobre-nosotros">
-        <div class="container hero-content">
-            <div class="hero-text">
-                <h1>IMPULSAMOS TU <span>INGENIERÍA</span> <span>CON DATOS</span></h1>
-                <div class="divider"></div>
-                <p class="sub-hero">DMSoluciones transforma la gestión operativa de tu emprendimiento mediante la consolidación de datos y la automatización inteligente.</p>
-            </div>
-            <div class="hero-image">
-                <svg class="ornament" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="50" cy="50" r="48" stroke="currentColor" stroke-width="2"/>
-                    <path d="M50 2L50 98" stroke="currentColor" stroke-width="2"/>
-                    <path d="M2 50L98 50" stroke="currentColor" stroke-width="2"/>
-                    <path d="M14.6447 14.6447L85.3553 85.3553" stroke="currentColor" stroke-width="2"/>
-                    <path d="M85.3553 14.6447L14.6447 85.3553" stroke="currentColor" stroke-width="2"/>
-                </svg>
-                <img src="https://via.placeholder.com/600x600/e0e0e0/555555?text=TU FOTO AQUÍ" alt="Delfina Moya - DMSoluciones">
+    <section id="hero">
+        <div class="container">
+            <div class="hero-flex">
+                <div class="hero-text">
+                    <h1>Ingeniería Aplicada a Procesos Digitales</h1>
+                    <p>Optimizamos la rentabilidad y eficiencia de tu negocio mediante la integración inteligente de datos y la automatización de flujos de trabajo.</p>
+                    <a href="#servicios" class="btn-primary">Ver Soluciones</a>
+                </div>
+                <div class="hero-image" style="flex: 1; text-align: center;">
+                    <div style="width: 100%; max-width: 400px; height: 300px; background: #f0f0f0; display: inline-flex; align-items: center; justify-content: center; border: 1px solid #ddd; font-weight: 800; color: #ccc;">
+                        DMS
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="servicios">
         <div class="container">
-            <h2 class="section-title">Nuestra Experiencia</h2>
+            <div class="section-header">
+                <h2>Servicios Especializados</h2>
+            </div>
+
             <div class="servicios-grid">
+                
                 <div class="servicio-card">
-                    <div class="servicio-icon">📊</div>
-                    <h3>BI & DASHBOARDS</h3>
-                    <p>Consolidación de bases de datos y creación de KPIs estratégicos para una visualización clara y efectiva de tu negocio.</p>
+                    <h3>Business Intelligence y Análisis de Datos</h3>
+                    <p>Integración de datos provenientes de múltiples orígenes en modelos unificados y coherentes. Desarrollamos tableros dinámicos para el seguimiento de indicadores clave (KPIs) en tiempo real, garantizando la trazabilidad de la información.</p>
+                    <span class="objetivo-tag">→ Gestión basada en evidencia</span>
                 </div>
+
                 <div class="servicio-card">
-                    <div class="servicio-icon">⚙️</div>
-                    <h3>AUTOMATIZACIÓN</h3>
-                    <p>Reducción drástica de tiempos operativos en tareas administrativas mediante soluciones de software a medida.</p>
+                    <h3>Automatización de Flujos Documentales</h3>
+                    <p>Implementamos sistemas para el procesamiento automático de información variable y generación inmediata de reportes personalizados. Optimizamos tareas de redacción manual, eliminando el error humano en documentos críticos.</p>
+                    <span class="objetivo-tag">→ Eficiencia operativa instantánea</span>
                 </div>
+
                 <div class="servicio-card">
-                    <div class="servicio-icon">📋</div>
-                    <h3>CONSULTORÍA IT</h3>
-                    <p>Optimización de procesos operativos y transformación digital orientada a la eficiencia y el ahorro de recursos.</p>
+                    <h3>Plataformas de Gestión a Medida</h3>
+                    <p>Diseñamos arquitecturas de software para la captura de datos en origen y gestión de procesos particulares. Creamos portales de seguimiento y autogestión que brindan transparencia y escalabilidad a la operación.</p>
+                    <span class="objetivo-tag">→ Estructuras digitales escalables</span>
                 </div>
+
             </div>
         </div>
     </section>
 
     <section id="contacto">
-        <div class="container contact-wrapper">
-            <h2>HABLEMOS</h2>
-            <p class="sub-contact">Dejanos tus datos para coordinar una reunión diagnóstica y dar el primer paso.</p>
-            
-            <form action="https://formsubmit.co/tu-email@ejemplo.com" method="POST" class="contact-form">
-                <input type="text" name="name" placeholder="Nombre completo" required>
-                <input type="text" name="contact" placeholder="Email o Teléfono" required>
-                <textarea name="message" rows="4" placeholder="¿Cómo podemos ayudarte?" required></textarea>
-                <button type="submit">Enviar Consulta</button>
-            </form>
-            
-            <div class="wsp-block">
-                <p>También podés contactarnos inmediatamente vía WhatsApp:</p>
-                <a href="https://wa.me/542227516259?text=Hola,%20quisiera%20consultar%20por..." class="wsp-link" target="_blank">💬 WHATSAPP DIRECTO</a>
+        <div class="container">
+            <div class="contact-flex">
+                <div>
+                    <div class="section-header">
+                        <h2>Contacto</h2>
+                    </div>
+                    <p>Analicemos cómo optimizar tus procesos actuales. <br><br> 
+                    <strong>Email:</strong> moyadelfina2@gmail.com<br>
+                    <strong>Ubicación:</strong> Buenos Aires, Argentina</p>
+                </div>
+                
+                <form action="https://formsubmit.co/moyadelfina2@gmail.com" method="POST">
+                    <div class="form-group">
+                        <label>Nombre Completo</label>
+                        <input type="text" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Corporativo</label>
+                        <input type="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Mensaje / Consulta</label>
+                        <textarea name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary" style="border:none; cursor:pointer; width:100%;">Enviar Consulta</button>
+                </form>
             </div>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <p>© 2026 DMSOLUCIONES | Ingeniería de Datos | Argentina</p>
+            <p>&copy; 2026 DMSoluciones | Ingeniería de Procesos y Datos. Todos los derechos reservados.</p>
         </div>
     </footer>
 
