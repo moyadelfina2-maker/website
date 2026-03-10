@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DMSoluciones | Consultoría y Optimización</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #004a99; --secondary: #25D366; --dark: #333; --light: #f8f9fa; }
+        body { font-family: 'Inter', sans-serif; margin: 0; background: var(--light); color: var(--dark); line-height: 1.6; }
+        header { background: var(--primary); color: white; padding: 4rem 1rem; text-align: center; border-bottom: 5px solid var(--secondary); }
+        .container { max-width: 900px; margin: auto; padding: 2rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2.5rem 0; }
+        .card { background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: transform 0.2s; }
+        .card:hover { transform: translateY(-5px); }
+        .card h3 { color: var(--primary); margin-top: 0; }
+        .contact-section { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; margin-top: 3rem; background: white; padding: 2.5rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.08); }
+        input, textarea { width: 100%; padding: 12px; margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-family: inherit; }
+        button { background: var(--primary); color: white; border: none; padding: 14px; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; font-size: 1rem; }
+        .btn-wsp { background: var(--secondary); display: flex; align-items: center; justify-content: center; text-decoration: none; color: white; padding: 14px; border-radius: 8px; font-weight: bold; font-size: 1rem; margin-bottom: 1rem; }
+        .btn-mail { color: var(--primary); text-decoration: none; font-weight: bold; display: block; text-align: center; border: 2px solid var(--primary); padding: 12px; border-radius: 8px; }
+        footer { text-align: center; padding: 3rem; color: #888; font-size: 0.85rem; }
+        hr { border: 0; border-top: 1px solid #eee; margin: 2rem 0; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>DMSoluciones</h1>
+    <p style="font-size: 1.2rem; opacity: 0.9;">Ingeniería de Datos & Optimización de Procesos</p>
+</header>
+
+<div class="container">
+    <section>
+        <h2 style="text-align: center; margin-bottom: 2rem;">Servicios Profesionales</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>📊 BI & Dashboards</h3>
+                <p>Consolidación de bases de datos y creación de KPIs estratégicos para una visualización clara del negocio.</p>
+            </div>
+            <div class="card">
+                <h3>⚙️ Automatización</h3>
+                <p>Reducción de tiempos operativos en tareas administrativas mediante soluciones de software a medida.</p>
+            </div>
+            <div class="card">
+                <h3>📋 Consultoría IT</h3>
+                <p>Optimización de procesos y transformación digital orientada a la eficiencia y el ahorro de recursos.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="contact-section" id="contacto">
+        <div>
+            <h2 style="margin-top: 0;">Contacto</h2>
+            <p>Completá tus datos para que podamos asesorarte en tu próximo proyecto.</p>
+            <form action="https://formsubmit.co/tu-email@ejemplo.com" method="POST">
+                <input type="text" name="name" placeholder="Nombre completo" required>
+                <input type="text" name="contact" placeholder="Email o Teléfono" required>
+                <textarea name="message" rows="4" placeholder="¿Cómo podemos ayudarte?" required></textarea>
+                <button type="submit">Enviar Consulta</button>
+            </form>
+        </div>
+        <div style="display: flex; flex-direction: column; justify-content: center;">
+            <h3 style="margin-top: 0;">Vías Directas</h3>
+            <p>Hacé clic para contactarnos inmediatamente:</p>
+            
+            <a href="https://wa.me/542227516259?text=Hola,%20quisiera%20consultar%20por..." class="btn-wsp" target="_blank">
+                💬 WhatsApp Directo
+            </a>
+
+            <a href="mailto:tu-email@ejemplo.com?subject=Consulta%20DMSoluciones" class="btn-mail">
+                📧 Enviar Correo
+            </a>
+            
+            <p style="font-size: 0.85rem; color: #666; margin-top: 1rem; text-align: center;">
+                Basados en Argentina | Soporte Remoto
+            </p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>© 2026 DMSoluciones | Eficiencia a través del dato.</p>
+</footer>
+
+</body>
+</html>
