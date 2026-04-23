@@ -111,40 +111,42 @@
         </div>
 
         <div id="contacto" class="md:col-span-6 lg:col-span-6 bento-card p-10 mt-10 md:p-16 border-t-8 border-purple-400">
-            <div class="text-center mb-12">
-                <h2 class="text-4xl font-black text-white tracking-tighter italic mb-4">¿Hablamos de tu <span class="accent-text">Próximo Paso?</span></h2>
-            </div>
+    <div class="text-center mb-12">
+        <h2 class="text-4xl font-black text-white tracking-tighter italic mb-4">¿Hablamos de tu <span class="accent-text">Próximo Paso?</span></h2>
+    </div>
 
-            <form action="https://formsubmit.co/moyadelfina2@gmail.com" method="POST" class="grid md:grid-cols-2 gap-6">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_template" value="table">
-                <input type="hidden" name="_subject" value="Nueva consulta: DMSoluciones">
+    <form action="https://formsubmit.co/moyadelfina2@gmail.com" method="POST" class="grid md:grid-cols-2 gap-6">
+        
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_subject" value="Nueva consulta: DMSoluciones">
+        
+        <input type="hidden" name="_next" value="https://tuweb.com/gracias.html">
 
-                <div class="space-y-2">
-                    <label class="text-[10px] font-black tracking-widest text-slate-500 uppercase ml-4">Nombre Completo</label>
-                    <input type="text" name="name" required placeholder="Nombre" 
-                           class="w-full px-6 py-4 rounded-2xl font-bold transition-all">
-                </div>
-
-                <div class="space-y-2">
-                    <label class="text-[10px] font-black tracking-widest text-slate-500 uppercase ml-4">Email de Contacto</label>
-                    <input type="email" name="email" required placeholder="nombre@empresa.com" 
-                           class="w-full px-6 py-4 rounded-2xl font-bold transition-all">
-                </div>
-
-                <div class="md:col-span-2 space-y-2">
-                    <label class="text-[10px] font-black tracking-widest text-slate-500 uppercase ml-4">Tu Desafío</label>
-                    <textarea name="message" rows="4" required placeholder="Contame tu proyecto..." 
-                              class="w-full px-6 py-4 rounded-2xl font-bold transition-all"></textarea>
-                </div>
-
-                <button type="submit" 
-                        class="md:col-span-2 w-full bg-white text-[#0f172a] py-5 rounded-2xl font-black text-lg uppercase tracking-widest transition-all hover:bg-[#ff7eb9] hover:text-white active:scale-95 shadow-xl">
-                    Enviar Mensaje
-                </button>
-            </form>
+        <div class="space-y-2">
+            <label class="text-[10px] font-black tracking-widest text-slate-500 uppercase ml-4">Nombre Completo</label>
+            <input type="text" name="name" required placeholder="Nombre" 
+                   class="w-full px-6 py-4 rounded-2xl font-bold bg-white/5 border border-white/10 text-white focus:outline-none focus:border-purple-400 transition-all">
         </div>
-    </main>
+
+        <div class="space-y-2">
+            <label class="text-[10px] font-black tracking-widest text-slate-500 uppercase ml-4">Email de Contacto</label>
+            <input type="email" name="email" required placeholder="nombre@empresa.com" 
+                   class="w-full px-6 py-4 rounded-2xl font-bold bg-white/5 border border-white/10 text-white focus:outline-none focus:border-purple-400 transition-all">
+        </div>
+
+        <div class="md:col-span-2 space-y-2">
+            <label class="text-[10px] font-black tracking-widest text-slate-500 uppercase ml-4">Tu Desafío</label>
+            <textarea name="message" rows="4" required placeholder="Contame tu proyecto..." 
+                      class="w-full px-6 py-4 rounded-2xl font-bold bg-white/5 border border-white/10 text-white focus:outline-none focus:border-purple-400 transition-all"></textarea>
+        </div>
+
+        <button type="submit" 
+                class="md:col-span-2 w-full bg-white text-[#0f172a] py-5 rounded-2xl font-black text-lg uppercase tracking-widest transition-all hover:bg-[#ff7eb9] hover:text-white active:scale-95 shadow-xl">
+            Enviar Mensaje
+        </button>
+    </form>
+</div>
 
     <footer class="py-10 border-t border-white/5 opacity-50">
         <div class="max-w-7xl mx-auto px-6 text-center text-[10px] font-black tracking-[0.3em]">
