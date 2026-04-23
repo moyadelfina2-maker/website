@@ -115,11 +115,13 @@
         <h2 class="text-4xl font-black text-white tracking-tighter italic mb-4">¿Hablamos de tu <span class="accent-text">Próximo Paso?</span></h2>
     </div>
 
-    <form action="https://formsubmit.co/moyadelfina2@gmail.com" method="POST" class="grid md:grid-cols-2 gap-6">
-        
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_subject" value="Nueva consulta: DMSoluciones">
+   <form action="https://api.web3forms.com/submit" method="POST">
+  <input type="hidden" name="access_key" value="c2a40bc3-29d4-43a7-a6c5-ab48988236a8">
+  <input type="text" name="name" required>
+  <input type="email" name="email" required>
+  <textarea name="message" required></textarea>
+  <button type="submit">Submit Form</button>
+</form>
         
         <input type="hidden" name="_next" value="https://tuweb.com/gracias.html">
 
