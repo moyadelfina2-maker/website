@@ -7,12 +7,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-dark: #121212;
-            --accent-blue: #004a99; 
-            --bg-gray: #f8f9fa;
-            --text-main: #333333;
-            --text-muted: #666666;
+            --bg-dark: #004a7c;    /* Azul profundo de la imagen */
+            --accent-pink: #ff7eb9; /* Rosa vibrante */
+            --accent-cyan: #7dd3fc; /* Azul cielo/cian */
             --white: #ffffff;
+            --text-main: #1e293b;
+            --text-light: #f8fafc;
             --whatsapp-green: #25d366;
         }
 
@@ -23,17 +23,20 @@
             color: var(--text-main);
             line-height: 1.6;
             background-color: var(--white);
+            overflow-x: hidden;
         }
 
         .container { max-width: 1200px; margin: 0 auto; padding: 0 25px; }
 
+        /* --- Header --- */
         header {
-            padding: 25px 0;
-            border-bottom: 1px solid #eee;
+            padding: 20px 0;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
-            background: #fff;
             z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
         nav { display: flex; justify-content: space-between; align-items: center; }
@@ -41,16 +44,36 @@
         .logo {
             font-weight: 800;
             font-size: 1.4rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--primary-dark);
+            letter-spacing: -0.5px;
+            color: var(--bg-dark);
         }
 
-        .logo span { color: var(--accent-blue); }
+        .logo span { color: var(--accent-pink); }
 
+        /* --- Botones --- */
+        .btn-primary {
+            display: inline-block;
+            padding: 14px 30px;
+            background: var(--bg-dark);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 74, 124, 0.2);
+            background: #00365a;
+        }
+
+        /* --- Hero --- */
         #hero {
             padding: 100px 0;
-            background: linear-gradient(to right, #ffffff 55%, #fafafa 45%);
+            background: radial-gradient(circle at 80% 20%, #f1f5f9 0%, #ffffff 100%);
         }
 
         .hero-flex { display: flex; align-items: center; justify-content: space-between; gap: 50px; }
@@ -58,96 +81,126 @@
         .hero-text { flex: 1.2; }
 
         .hero-text h1 {
-            font-size: 3.2rem;
+            font-size: 3.8rem;
             font-weight: 800;
-            line-height: 1.1;
+            line-height: 1;
             margin-bottom: 25px;
-            color: var(--primary-dark);
+            color: var(--bg-dark);
+            letter-spacing: -2px;
         }
 
-        .btn-primary {
-            display: inline-block;
-            padding: 15px 35px;
-            background-color: var(--accent-blue);
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            transition: 0.3s;
-            border: none;
+        .hero-text p {
+            font-size: 1.2rem;
+            color: #475569;
+            margin-bottom: 35px;
+            max-width: 500px;
         }
 
-        .btn-primary:hover { background-color: #003366; transform: translateY(-2px); }
-
-        #servicios { padding: 100px 0; background-color: var(--bg-gray); }
+        /* --- Sección Servicios (Bento Grid) --- */
+        #servicios {
+            padding: 100px 0;
+            background-color: var(--bg-dark);
+            border-radius: 60px 60px 0 0;
+        }
 
         .section-header {
-            margin-bottom: 60px;
-            border-left: 6px solid var(--accent-blue);
-            padding-left: 25px;
+            margin-bottom: 50px;
         }
 
-        .section-header h2 { font-size: 2.2rem; font-weight: 800; text-transform: uppercase; }
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--white);
+            letter-spacing: -1px;
+        }
 
         .servicios-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            border: 1px solid #e0e0e0;
-            background-color: #e0e0e0; 
-            gap: 1px; 
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 220px;
+            gap: 20px;
         }
 
         .servicio-card {
-            background: var(--white);
-            padding: 60px 45px;
+            border-radius: 35px;
+            padding: 40px;
             display: flex;
             flex-direction: column;
-            transition: all 0.4s ease;
+            justify-content: space-between;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
         }
 
-        .servicio-card:hover { background: #fdfdfd; border-bottom: 6px solid var(--accent-blue); }
+        .servicio-card:hover { transform: scale(1.02); }
 
-        .servicio-card h3 { font-size: 1.25rem; font-weight: 700; text-transform: uppercase; margin-bottom: 25px; min-height: 3rem; }
+        .servicio-card h3 { font-size: 1.6rem; font-weight: 700; line-height: 1.2; margin-bottom: 15px; }
 
-        .objetivo-tag { margin-top: auto; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--accent-blue); letter-spacing: 1px; }
+        .servicio-card p { font-size: 0.95rem; opacity: 0.9; }
 
-        #contacto { padding: 100px 0; }
+        .objetivo-tag {
+            margin-top: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Variantes de tarjetas */
+        .card-cyan { background-color: var(--accent-cyan); color: var(--bg-dark); }
+        .card-pink { background-color: var(--accent-pink); color: var(--white); }
+        .card-white { background-color: var(--white); color: var(--bg-dark); }
+
+        /* Tamaños Bento */
+        .span-large { grid-column: span 2; grid-row: span 2; }
+        .span-tall { grid-row: span 2; }
+        .span-wide { grid-column: span 2; }
+
+        /* --- Contacto --- */
+        #contacto { padding: 100px 0; background: #fff; }
 
         .contact-flex { display: grid; grid-template-columns: 1fr 1.5fr; gap: 80px; }
 
         .form-group { margin-bottom: 20px; }
 
-        .form-group label { display: block; font-weight: 600; margin-bottom: 8px; text-transform: uppercase; font-size: 0.75rem; color: var(--text-muted); }
+        .form-group label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 0.8rem; color: #64748b; }
 
-        .form-group input, .form-group textarea { width: 100%; padding: 15px; border: 1px solid #ddd; background: #fcfcfc; }
-
-        .whatsapp-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: var(--whatsapp-green);
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            z-index: 9999;
-            transition: 0.3s;
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 18px;
+            border: 1px solid #e2e8f0;
+            background: #f8fafc;
+            border-radius: 15px;
+            font-family: inherit;
         }
 
-        .whatsapp-btn svg { width: 32px; height: 32px; fill: white; }
+        .form-group input:focus { outline: 2px solid var(--accent-cyan); border-color: transparent; }
 
-        footer { padding: 60px 0; border-top: 1px solid #eee; text-align: center; font-size: 0.85rem; color: var(--text-muted); }
+        /* --- WhatsApp & Footer --- */
+        .whatsapp-btn {
+            position: fixed; bottom: 30px; right: 30px;
+            background-color: var(--whatsapp-green);
+            width: 65px; height: 65px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+            z-index: 9999; transition: 0.3s;
+        }
 
+        .whatsapp-btn:hover { transform: rotate(10deg) scale(1.1); }
+
+        footer { padding: 50px 0; text-align: center; font-size: 0.9rem; color: #94a3b8; }
+
+        /* --- Responsive --- */
         @media (max-width: 992px) {
-            #hero { background: #fff; text-align: center; }
-            .hero-flex { flex-direction: column; }
-            .contact-flex { grid-template-columns: 1fr; gap: 40px; }
+            .hero-text h1 { font-size: 2.8rem; }
+            .servicios-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero-flex, .contact-flex { flex-direction: column; grid-template-columns: 1fr; }
+            #hero { text-align: center; }
+            .hero-text p { margin: 0 auto 30px; }
+        }
+
+        @media (max-width: 600px) {
+            .servicios-grid { grid-template-columns: 1fr; grid-auto-rows: auto; }
+            .span-large, .span-tall, .span-wide { grid-column: span 1; grid-row: span 1; }
         }
     </style>
 </head>
@@ -157,7 +210,7 @@
         <div class="container">
             <nav>
                 <div class="logo">DM<span>SOLUCIONES</span></div>
-                <a href="#contacto" class="btn-primary" style="padding: 10px 20px; font-size: 0.75rem;">Consulta Directa</a>
+                <a href="#contacto" class="btn-primary" style="padding: 10px 20px;">Contacto</a>
             </nav>
         </div>
     </header>
@@ -166,104 +219,86 @@
         <div class="container">
             <div class="hero-flex">
                 <div class="hero-text">
-                    <h1>Ingeniería de Procesos y Datos</h1>
-                    <p>Potenciamos la toma de decisiones mediante la integración estratégica de información y la automatización de flujos operativos.</p>
+                    <h1>Ingeniería de<br>Procesos y Datos</h1>
+                    <p>Potenciamos la toma de decisiones mediante automatización y análisis estratégico de información.</p>
                     <a href="#servicios" class="btn-primary">Explorar Soluciones</a>
                 </div>
-                <div class="hero-image" style="flex: 1; text-align: center;">
-                    <img src="logo.png" alt="DM Soluciones" style="width: 100%; max-width: 450px; height: auto; display: block; margin: 0 auto;">
-            </div>
+                <div class="hero-image">
+                    <img src="logo.png" alt="DM Soluciones" style="width: 100%; max-width: 400px; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.1));">
+                </div>
             </div>
         </div>
     </section>
 
-   <section id="servicios">
-    <div class="container">
-        <div class="section-header">
-            <h2>Servicios Especializados</h2>
-        </div>
-
-        <div class="servicios-grid">
-            <div class="servicio-card">
-                <h3>Business Intelligence y Análisis de Datos</h3>
-                <p>Integración de datos de múltiples orígenes en modelos normalizados. Desarrollamos tableros dinámicos para el seguimiento de KPIs en tiempo real.</p>
-                <details style="margin-top: 15px; cursor: pointer; font-size: 0.9rem; color: var(--text-muted);">
-                    <summary style="font-weight: 600; color: var(--accent-blue);">Ver más detalles</summary>
-                    <div style="padding-top: 10px; border-top: 1px solid #eee; margin-top: 10px;">
-                        • Creacion/integracion de bases de datos.<br>
-                        • Creacion de indicadores para la toma de decisiones.<br>
-                        • Visualización avanzada en Power BI.<br>
-                        • Identificación de oportunidades de mejora y posibilidad de soporte mensual
-                    </div>
-                </details>
-                <span class="objetivo-tag">→ Gestión basada en evidencia</span>
+    <section id="servicios">
+        <div class="container">
+            <div class="section-header">
+                <h2>Servicios Especializados</h2>
             </div>
 
-            <div class="servicio-card">
-                <h3>Automatización de Flujos Documentales</h3>
-                <p>Sistemas para el procesamiento de información variable y generación de reportes automáticos complejos.</p>
-                <details style="margin-top: 15px; cursor: pointer; font-size: 0.9rem; color: var(--text-muted);">
-                    <summary style="font-weight: 600; color: var(--accent-blue);">Ver mas detalles</summary>
-                    <div style="padding-top: 10px; border-top: 1px solid #eee; margin-top: 10px;">
-                        • Automatización de reportes/informes.<br>
-                        • Desarrollo de informes base inteligentes con variables dinámicas (clientes, estados, fechas).<br>
-                        • Procesamiento de información variable mediante scripts personalizados.<br>
-                        • Estandarización de documentos para asegurar coherencia técnica y profesional.
+            <div class="servicios-grid">
+                <div class="servicio-card card-cyan span-large">
+                    <div>
+                        <h3>Business Intelligence y Análisis de Datos</h3>
+                        <p>Modelos normalizados y tableros dinámicos en Power BI para el seguimiento de KPIs en tiempo real.</p>
                     </div>
-                </details>
-                <span class="objetivo-tag">→ Eficiencia operativa instantánea</span>
-            </div>
+                    <span class="objetivo-tag">→ Gestión basada en evidencia</span>
+                </div>
 
-            <div class="servicio-card">
-                <h3>Plataformas de Gestión a Medida</h3>
-                <p>Arquitecturas de software para captura de datos y gestión de procesos específicos. Enfoque en escalabilidad.</p>
-                <details style="margin-top: 15px; cursor: pointer; font-size: 0.9rem; color: var(--text-muted);">
-                    <summary style="font-weight: 600; color: var(--accent-blue);">Ver más detalles</summary>
-                    <div style="padding-top: 10px; border-top: 1px solid #eee; margin-top: 10px;">
-                        • Gestión Operativa: Desarrollo de aplicaciones personalizadas segun la necesidad de tu empresa.<br>
-                        • Seguimiento de Proyectos: Plataformas para la carga y monitoreo de avances de obra o proyectos.<br>
-                        • Interfaces de autogestión: Herramientas adaptadas a procesos operativos específicos.
+                <div class="servicio-card card-pink span-tall">
+                    <div>
+                        <h3>Automatización de Flujos</h3>
+                        <p>Procesamiento de información y reportes automáticos complejos mediante scripts personalizados.</p>
                     </div>
-                </details>
-                <span class="objetivo-tag">→ Estructuras digitales escalables</span>
+                    <span class="objetivo-tag">→ Eficiencia Instantánea</span>
+                </div>
+
+                <div class="servicio-card card-white span-wide">
+                    <div>
+                        <h3>Plataformas a Medida</h3>
+                        <p>Software para captura de datos y gestión de procesos operativos escalables.</p>
+                    </div>
+                    <span class="objetivo-tag">→ Estructuras Escalables</span>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <section id="contacto">
         <div class="container">
             <div class="contact-flex">
                 <div>
                     <div class="section-header">
-                        <h2>Contacto</h2>
+                        <h2 style="color: var(--bg-dark);">¿Hablamos?</h2>
                     </div>
-                    <p>Analicemos el potencial de optimización en tu estructura actual.</p>
-                    <p style="margin-top:20px;"><strong>Ubicación:</strong> Buenos Aires, Argentina<br>
-                    <strong>Email:</strong> moyadelfina2@gmail.com</p>
+                    <p>Analicemos el potencial de optimización de tu estructura actual.</p>
+                    <p style="margin-top:30px;">
+                        <strong>Ubicación:</strong> Buenos Aires, Argentina<br>
+                        <strong>Email:</strong> moyadelfina2@gmail.com
+                    </p>
                 </div>
                 
                 <form action="https://formsubmit.co/moyadelfina2@gmail.com" method="POST">
                     <div class="form-group">
-                        <label>Nombre</label>
-                        <input type="text" name="name" required>
+                        <label>NOMBRE COMPLETO</label>
+                        <input type="text" name="name" placeholder="Ej. Delfina Moya" required>
                     </div>
                     <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" name="email" required>
+                        <label>EMAIL CORPORATIVO</label>
+                        <input type="email" name="email" placeholder="nombre@empresa.com" required>
                     </div>
                     <div class="form-group">
-                        <label>Consulta</label>
-                        <textarea name="message" rows="4" required></textarea>
+                        <label>MENSAJE</label>
+                        <textarea name="message" rows="4" placeholder="¿En qué podemos ayudarte?" required></textarea>
                     </div>
-                    <button type="submit" class="btn-primary" style="cursor:pointer; width:100%;">Enviar Mensaje</button>
+                    <button type="submit" class="btn-primary" style="width: 100%; cursor: pointer; font-size: 1rem;">Enviar Propuesta</button>
                 </form>
             </div>
         </div>
     </section>
 
     <a href="https://wa.me/5492227516259" class="whatsapp-btn" target="_blank">
-        <svg viewBox="0 0 32 32"><path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.733 5.476 2.016 7.787l-2.016 7.213 7.382-1.938c2.228 1.205 4.79 1.938 7.618 1.938 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.355c-2.52 0-4.872-0.697-6.885-1.905l-0.493-0.297-4.385 1.15 1.171-4.188-0.326-0.518c-1.341-2.127-2.122-4.652-2.122-7.361 0-7.364 5.992-13.355 13.355-13.355s13.355 5.991 13.355 13.355-5.992 13.355-13.355 13.355zM22.518 19.33c-0.355-0.178-2.103-1.038-2.428-1.156-0.326-0.118-0.563-0.178-0.8 0.178-0.237 0.355-0.918 1.156-1.125 1.393-0.207 0.237-0.415 0.266-0.77 0.089-0.355-0.178-1.5-0.553-2.856-1.763-1.056-0.941-1.769-2.103-1.976-2.458-0.207-0.355-0.022-0.547 0.155-0.724 0.161-0.158 0.355-0.415 0.533-0.622 0.178-0.207 0.237-0.355 0.355-0.592 0.118-0.237 0.059-0.444-0.029-0.622-0.089-0.178-0.8-1.925-1.096-2.635-0.289-0.693-0.582-0.599-0.8-0.611-0.207-0.011-0.444-0.014-0.681-0.014s-0.622 0.089-0.947 0.444c-0.326 0.355-1.243 1.214-1.243 2.96 0 1.747 1.273 3.434 1.45 3.671 0.178 0.237 2.505 3.825 6.069 5.362 0.848 0.366 1.51 0.584 2.026 0.748 0.851 0.27 1.626 0.232 2.239 0.141 0.684-0.101 2.103-0.859 2.399-1.688 0.296-0.829 0.296-1.54 0.207-1.688-0.089-0.148-0.326-0.237-0.681-0.415z"></path></svg>
+        <svg style="width:35px; height:35px; fill:#fff" viewBox="0 0 32 32"><path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.733 5.476 2.016 7.787l-2.016 7.213 7.382-1.938c2.228 1.205 4.79 1.938 7.618 1.938 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.355c-2.52 0-4.872-0.697-6.885-1.905l-0.493-0.297-4.385 1.15 1.171-4.188-0.326-0.518c-1.341-2.127-2.122-4.652-2.122-7.361 0-7.364 5.992-13.355 13.355-13.355s13.355 5.991 13.355 13.355-5.992 13.355-13.355 13.355zM22.518 19.33c-0.355-0.178-2.103-1.038-2.428-1.156-0.326-0.118-0.563-0.178-0.8 0.178-0.237 0.355-0.918 1.156-1.125 1.393-0.207 0.237-0.415 0.266-0.77 0.089-0.355-0.178-1.5-0.553-2.856-1.763-1.056-0.941-1.769-2.103-1.976-2.458-0.207-0.355-0.022-0.547 0.155-0.724 0.161-0.158 0.355-0.415 0.533-0.622 0.178-0.207 0.237-0.355 0.355-0.592 0.118-0.237 0.059-0.444-0.029-0.622-0.089-0.178-0.8-1.925-1.096-2.635-0.289-0.693-0.582-0.599-0.8-0.611-0.207-0.011-0.444-0.014-0.681-0.014s-0.622 0.089-0.947 0.444c-0.326 0.355-1.243 1.214-1.243 2.96 0 1.747 1.273 3.434 1.45 3.671 0.178 0.237 2.505 3.825 6.069 5.362 0.848 0.366 1.51 0.584 2.026 0.748 0.851 0.27 1.626 0.232 2.239 0.141 0.684-0.101 2.103-0.859 2.399-1.688 0.296-0.829 0.296-1.54 0.207-1.688-0.089-0.148-0.326-0.237-0.681-0.415z"></path></svg>
     </a>
 
     <footer>
