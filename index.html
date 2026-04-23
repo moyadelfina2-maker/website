@@ -3,309 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DMSoluciones | Ingeniería de Procesos y Datos</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <title>DM Soluciones | Ingeniería de Procesos y Datos</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        :root {
-            --bg-dark: #004a7c;    /* Azul profundo de la imagen */
-            --accent-pink: #ff7eb9; /* Rosa vibrante */
-            --accent-cyan: #7dd3fc; /* Azul cielo/cian */
-            --white: #ffffff;
-            --text-main: #1e293b;
-            --text-light: #f8fafc;
-            --whatsapp-green: #25d366;
+        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: #cbd5e1; overflow-x: hidden; }
+        .mesh-bg {
+            position: fixed; inset: 0; z-index: -10;
+            background: radial-gradient(at 0% 0%, rgba(0, 74, 124, 0.4) 0, transparent 50%),
+                        radial-gradient(at 100% 0%, rgba(255, 126, 185, 0.2) 0, transparent 50%),
+                        radial-gradient(at 50% 100%, rgba(192, 132, 252, 0.2) 0, transparent 50%),
+                        #0f172a;
         }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--text-main);
-            line-height: 1.6;
-            background-color: var(--white);
-            overflow-x: hidden;
-        }
-
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 25px; }
-
-        /* --- Header --- */
-        header {
-            padding: 20px 0;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-        }
-
-        nav { display: flex; justify-content: space-between; align-items: center; }
-
-        .logo {
-            font-weight: 800;
-            font-size: 1.4rem;
-            letter-spacing: -0.5px;
-            color: var(--bg-dark);
-        }
-
-        .logo span { color: var(--accent-pink); }
-
-        /* --- Botones --- */
-        .btn-primary {
+        .accent-text {
+            background: linear-gradient(to right, #ff7eb9, #7dd3fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-style: italic;
             display: inline-block;
-            padding: 14px 30px;
-            background: var(--bg-dark);
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 600;
-            border-radius: 12px;
+            padding-right: 40px;
+            margin-right: -40px;
+        }
+        .bento-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 2.5rem;
             transition: all 0.3s ease;
-            font-size: 0.9rem;
-            border: none;
         }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0, 74, 124, 0.2);
-            background: #00365a;
-        }
-
-        /* --- Hero --- */
-        #hero {
-            padding: 100px 0;
-            background: radial-gradient(circle at 80% 20%, #f1f5f9 0%, #ffffff 100%);
-        }
-
-        .hero-flex { display: flex; align-items: center; justify-content: space-between; gap: 50px; }
-
-        .hero-text { flex: 1.2; }
-
-        .hero-text h1 {
-            font-size: 3.8rem;
+        .bento-card:hover { border-color: rgba(255, 255, 255, 0.2); background: rgba(255, 255, 255, 0.08); transform: translateY(-5px); }
+        .btn-gradient {
+            background: linear-gradient(to bottom right, #ff7eb9, #7dd3fc);
+            color: #0f172a;
+            border-radius: 1rem;
             font-weight: 800;
-            line-height: 1;
-            margin-bottom: 25px;
-            color: var(--bg-dark);
-            letter-spacing: -2px;
+            padding: 1rem 2rem;
+            transition: all 0.2s;
+            box-shadow: 0 10px 15px -3px rgba(255, 126, 181, 0.2);
         }
-
-        .hero-text p {
-            font-size: 1.2rem;
-            color: #475569;
-            margin-bottom: 35px;
-            max-width: 500px;
-        }
-
-        /* --- Sección Servicios (Bento Grid) --- */
-        #servicios {
-            padding: 100px 0;
-            background-color: var(--bg-dark);
-            border-radius: 60px 60px 0 0;
-        }
-
-        .section-header {
-            margin-bottom: 50px;
-        }
-
-        .section-header h2 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--white);
-            letter-spacing: -1px;
-        }
-
-        .servicios-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-auto-rows: 220px;
-            gap: 20px;
-        }
-
-        .servicio-card {
-            border-radius: 35px;
-            padding: 40px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            text-decoration: none;
-        }
-
-        .servicio-card:hover { transform: scale(1.02); }
-
-        .servicio-card h3 { font-size: 1.6rem; font-weight: 700; line-height: 1.2; margin-bottom: 15px; }
-
-        .servicio-card p { font-size: 0.95rem; opacity: 0.9; }
-
-        .objetivo-tag {
-            margin-top: 20px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Variantes de tarjetas */
-        .card-cyan { background-color: var(--accent-cyan); color: var(--bg-dark); }
-        .card-pink { background-color: var(--accent-pink); color: var(--white); }
-        .card-white { background-color: var(--white); color: var(--bg-dark); }
-
-        /* Tamaños Bento */
-        .span-large { grid-column: span 2; grid-row: span 2; }
-        .span-tall { grid-row: span 2; }
-        .span-wide { grid-column: span 2; }
-
-        /* --- Contacto --- */
-        #contacto { padding: 100px 0; background: #fff; }
-
-        .contact-flex { display: grid; grid-template-columns: 1fr 1.5fr; gap: 80px; }
-
-        .form-group { margin-bottom: 20px; }
-
-        .form-group label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 0.8rem; color: #64748b; }
-
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 18px;
-            border: 1px solid #e2e8f0;
-            background: #f8fafc;
-            border-radius: 15px;
-            font-family: inherit;
-        }
-
-        .form-group input:focus { outline: 2px solid var(--accent-cyan); border-color: transparent; }
-
-        /* --- WhatsApp & Footer --- */
+        .btn-gradient:hover { transform: scale(1.05); box-shadow: 0 10px 15px -3px rgba(255, 126, 181, 0.4); }
+        input, textarea { background: rgba(255, 255, 255, 0.05) !important; border: 1px solid rgba(255, 255, 255, 0.1) !important; color: white !important; }
+        input:focus, textarea:focus { border-color: #c084fc !important; outline: none; }
         .whatsapp-btn {
-            position: fixed; bottom: 30px; right: 30px;
-            background-color: var(--whatsapp-green);
-            width: 65px; height: 65px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
-            z-index: 9999; transition: 0.3s;
+            position: fixed; bottom: 2rem; right: 2rem; z-index: 100;
+            background-color: #25d366; width: 4rem; height: 4rem;
+            border-radius: 1.5rem; display: flex; items-center: center; justify-content: center;
+            box-shadow: 0 20px 25px -5px rgba(16, 185, 129, 0.3); transition: all 0.3s;
         }
-
-        .whatsapp-btn:hover { transform: rotate(10deg) scale(1.1); }
-
-        footer { padding: 50px 0; text-align: center; font-size: 0.9rem; color: #94a3b8; }
-
-        /* --- Responsive --- */
-        @media (max-width: 992px) {
-            .hero-text h1 { font-size: 2.8rem; }
-            .servicios-grid { grid-template-columns: repeat(2, 1fr); }
-            .hero-flex, .contact-flex { flex-direction: column; grid-template-columns: 1fr; }
-            #hero { text-align: center; }
-            .hero-text p { margin: 0 auto 30px; }
-        }
-
-        @media (max-width: 600px) {
-            .servicios-grid { grid-template-columns: 1fr; grid-auto-rows: auto; }
-            .span-large, .span-tall, .span-wide { grid-column: span 1; grid-row: span 1; }
-        }
+        .whatsapp-btn:hover { transform: scale(1.1) rotate(10deg); }
     </style>
 </head>
 <body>
+    <div class="mesh-bg"></div>
 
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">DM<span>SOLUCIONES</span></div>
-                <a href="#contacto" class="btn-primary" style="padding: 10px 20px;">Contacto</a>
-            </nav>
+    <!-- Redes sociales / Logo Instagram (Hidden for web, available for you) -->
+    
+    <nav class="fixed top-6 left-0 right-0 z-50 px-6">
+        <div class="max-w-7xl mx-auto flex items-center justify-between bg-white/5 backdrop-blur-xl border border-white/10 px-8 h-16 rounded-full shadow-2xl">
+            <div class="text-xl md:text-2xl font-black text-white italic flex items-center pr-12">
+                DM<span class="accent-text ml-2">SOLUCIONES</span>
+            </div>
+            <a href="https://wa.me/5492227516259" class="bg-[#ff7eb9] text-[#0f172a] px-6 py-2 rounded-full font-black text-xs uppercase tracking-tight">¡Hablemos!</a>
         </div>
-    </header>
+    </nav>
 
-    <section id="hero">
-        <div class="container">
-            <div class="hero-flex">
-                <div class="hero-text">
-                    <h1>Ingeniería de<br>Procesos y Datos</h1>
-                    <p>Potenciamos la toma de decisiones mediante automatización y análisis estratégico de información.</p>
-                    <a href="#servicios" class="btn-primary">Explorar Soluciones</a>
-                </div>
-                <div class="hero-image">
-                    <img src="logo.png" alt="DM Soluciones" style="width: 100%; max-width: 400px; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.1));">
-                </div>
+    <main class="pt-32 pb-20 px-4 md:px-6 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-4">
+        <!-- Hero Card -->
+        <div class="md:col-span-4 lg:col-span-4 bento-card p-10 flex flex-col justify-center relative overflow-hidden">
+            <span class="inline-block px-3 py-1 rounded-full bg-cyan-400/20 text-[#7dd3fc] text-[10px] font-black uppercase mb-6 w-fit">Ingeniería Industrial 4.0</span>
+            <h1 class="text-5xl md:text-7xl font-black text-white leading-none tracking-tighter mb-6 italic">Eficiencia <br><span class="accent-text">Estratégica.</span></h1>
+            <p class="text-lg text-slate-400 max-w-lg mb-8 leading-relaxed font-medium">Transformando complejidad en rentabilidad mediante automatización inteligente.</p>
+            <div class="flex gap-4">
+                <a href="#contacto" class="btn-gradient text-sm">Iniciar Proyecto</a>
             </div>
         </div>
-    </section>
 
-    <section id="servicios">
-        <div class="container">
-            <div class="section-header">
-                <h2>Servicios Especializados</h2>
-            </div>
-
-            <div class="servicios-grid">
-                <div class="servicio-card card-cyan span-large">
-                    <div>
-                        <h3>Business Intelligence y Análisis de Datos</h3>
-                        <p>Modelos normalizados y tableros dinámicos en Power BI para el seguimiento de KPIs en tiempo real.</p>
-                    </div>
-                    <span class="objetivo-tag">→ Gestión basada en evidencia</span>
-                </div>
-
-                <div class="servicio-card card-pink span-tall">
-                    <div>
-                        <h3>Automatización de Flujos</h3>
-                        <p>Procesamiento de información y reportes automáticos complejos mediante scripts personalizados.</p>
-                    </div>
-                    <span class="objetivo-tag">→ Eficiencia Instantánea</span>
-                </div>
-
-                <div class="servicio-card card-white span-wide">
-                    <div>
-                        <h3>Plataformas a Medida</h3>
-                        <p>Software para captura de datos y gestión de procesos operativos escalables.</p>
-                    </div>
-                    <span class="objetivo-tag">→ Estructuras Escalables</span>
-                </div>
+        <!-- Logo Card -->
+        <div class="md:col-span-2 lg:col-span-2 bento-card bg-purple-500/10 flex items-center justify-center p-12">
+            <div class="w-40 h-40 bg-[#c084fc] rounded-full flex items-center justify-center shadow-2xl shadow-purple-500/40">
+                <div class="text-3xl font-black text-white italic">DM</div>
             </div>
         </div>
-    </section>
 
-    <section id="contacto">
-        <div class="container">
-            <div class="contact-flex">
-                <div>
-                    <div class="section-header">
-                        <h2 style="color: var(--bg-dark);">¿Hablamos?</h2>
-                    </div>
-                    <p>Analicemos el potencial de optimización de tu estructura actual.</p>
-                    <p style="margin-top:30px;">
-                        <strong>Ubicación:</strong> Buenos Aires, Argentina<br>
-                        <strong>Email:</strong> moyadelfina2@gmail.com
-                    </p>
-                </div>
-                
-                <form action="https://formsubmit.co/moyadelfina2@gmail.com" method="POST">
-                    <div class="form-group">
-                        <label>NOMBRE COMPLETO</label>
-                        <input type="text" name="name" placeholder="Ej. Delfina Moya" required>
-                    </div>
-                    <div class="form-group">
-                        <label>EMAIL CORPORATIVO</label>
-                        <input type="email" name="email" placeholder="nombre@empresa.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label>MENSAJE</label>
-                        <textarea name="message" rows="4" placeholder="¿En qué podemos ayudarte?" required></textarea>
-                    </div>
-                    <button type="submit" class="btn-primary" style="width: 100%; cursor: pointer; font-size: 1rem;">Enviar Propuesta</button>
-                </form>
+        <!-- Data Card -->
+        <div class="md:col-span-2 lg:col-span-3 bento-card p-8 flex flex-col justify-between border-l-4 border-cyan-400">
+            <div class="flex justify-between items-start">
+                <i data-lucide="bar-chart-3" class="text-[#7dd3fc] w-8 h-8"></i>
+                <div class="text-[#7dd3fc] font-black text-3xl">90%</div>
+            </div>
+            <div>
+                <h3 class="text-xl font-black text-white mb-2">Reducción de Errores</h3>
+                <p class="text-slate-400 text-xs">Mediante flujos automatizados en Python y Power Automate.</p>
             </div>
         </div>
-    </section>
 
-    <a href="https://wa.me/5492227516259" class="whatsapp-btn" target="_blank">
-        <svg style="width:35px; height:35px; fill:#fff" viewBox="0 0 32 32"><path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.733 5.476 2.016 7.787l-2.016 7.213 7.382-1.938c2.228 1.205 4.79 1.938 7.618 1.938 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.355c-2.52 0-4.872-0.697-6.885-1.905l-0.493-0.297-4.385 1.15 1.171-4.188-0.326-0.518c-1.341-2.127-2.122-4.652-2.122-7.361 0-7.364 5.992-13.355 13.355-13.355s13.355 5.991 13.355 13.355-5.992 13.355-13.355 13.355zM22.518 19.33c-0.355-0.178-2.103-1.038-2.428-1.156-0.326-0.118-0.563-0.178-0.8 0.178-0.237 0.355-0.918 1.156-1.125 1.393-0.207 0.237-0.415 0.266-0.77 0.089-0.355-0.178-1.5-0.553-2.856-1.763-1.056-0.941-1.769-2.103-1.976-2.458-0.207-0.355-0.022-0.547 0.155-0.724 0.161-0.158 0.355-0.415 0.533-0.622 0.178-0.207 0.237-0.355 0.355-0.592 0.118-0.237 0.059-0.444-0.029-0.622-0.089-0.178-0.8-1.925-1.096-2.635-0.289-0.693-0.582-0.599-0.8-0.611-0.207-0.011-0.444-0.014-0.681-0.014s-0.622 0.089-0.947 0.444c-0.326 0.355-1.243 1.214-1.243 2.96 0 1.747 1.273 3.434 1.45 3.671 0.178 0.237 2.505 3.825 6.069 5.362 0.848 0.366 1.51 0.584 2.026 0.748 0.851 0.27 1.626 0.232 2.239 0.141 0.684-0.101 2.103-0.859 2.399-1.688 0.296-0.829 0.296-1.54 0.207-1.688-0.089-0.148-0.326-0.237-0.681-0.415z"></path></svg>
-    </a>
+        <!-- Services -->
+        <div class="md:col-span-3 lg:col-span-1 bento-card p-6 border-b-4 border-yellow-400">
+            <i data-lucide="pie-chart" class="text-yellow-400 w-6 h-6 mb-4"></i>
+            <h3 class="text-lg font-black text-white italic mb-2">BI & Analytics</h3>
+            <p class="text-slate-400 text-[10px]">Dashboards dinámicos en Power BI para control de KPIs.</p>
+        </div>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 DMSoluciones | Ingeniería de Procesos y Datos.</p>
+        <div class="md:col-span-3 lg:col-span-1 bento-card p-6 border-b-4 border-purple-400">
+            <i data-lucide="monitor" class="text-purple-400 w-6 h-6 mb-4"></i>
+            <h3 class="text-lg font-black text-white italic mb-2">Sistemas Web</h3>
+            <p class="text-slate-400 text-[10px]">Herramientas a medida para gestión operativa.</p>
+        </div>
+
+        <div class="md:col-span-6 lg:col-span-1 bento-card p-6 border-t-4 border-cyan-400">
+            <i data-lucide="brain" class="text-cyan-400 w-6 h-6 mb-4"></i>
+            <h3 class="text-lg font-black text-white italic mb-2">Procesos Lean</h3>
+            <p class="text-slate-400 text-[10px]">Optimización bajo metodologías ágiles.</p>
+        </div>
+
+        <!-- Contact Form Card -->
+        <div id="contacto" class="md:col-span-6 lg:col-span-6 bento-card p-10 mt-10 md:p-16 border-t-8 border-purple-400">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-black text-white tracking-tighter italic mb-4">Conversemos <span class="accent-text">Digitalmente</span></h2>
+            </div>
+            <form action="https://formsubmit.co/moyadelfina2@gmail.com" method="POST" class="grid md:grid-cols-2 gap-6">
+                <div class="space-y-2">
+                    <label class="text-[10px] font-black tracking-widest text-slate-500 uppercase ml-4">Nombre</label>
+                    <input type="text" name="name" required placeholder="Delfina Moya" class="w-full px-6 py-4 rounded-2xl font-bold">
+                </div>
+                <div class="space-y-2">
+                    <label class="text-[10px] font-black tracking-widest text-slate-500 uppercase ml-4">Email</label>
+                    <input type="email" name="email" required placeholder="hola@empresa.com" class="w-full px-6 py-4 rounded-2xl font-bold">
+                </div>
+                <div class="md:col-span-2 space-y-2">
+                    <label class="text-[10px] font-black tracking-widest text-slate-500 uppercase ml-4">Mensaje</label>
+                    <textarea name="message" rows="4" required placeholder="Contame tu desafío..." class="w-full px-6 py-4 rounded-2xl font-bold"></textarea>
+                </div>
+                <button type="submit" class="md:col-span-2 w-full bg-white text-[#0f172a] py-5 rounded-2xl font-black text-lg uppercase tracking-widest transition-colors hover:bg-[#c084fc] hover:text-white">Enviar Mensaje</button>
+            </form>
+        </div>
+    </main>
+
+    <footer class="py-20 border-t border-white/5 opacity-50">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] font-black tracking-[0.3em]">
+            <div class="text-white italic">DM<span class="accent-text">SOLUCIONES</span></div>
+            <div class="text-center md:text-right">BUENOS AIRES, AR • MOYADELFINA2@GMAIL.COM</div>
         </div>
     </footer>
 
+    <a href="https://wa.me/5492227516259" target="_blank" class="whatsapp-btn">
+        <i data-lucide="message-circle" class="text-white w-8 h-8"></i>
+    </a>
+
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+    </script>
 </body>
 </html>
