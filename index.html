@@ -4,14 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DM Soluciones | Ingeniería de Procesos y Datos</title>
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: #cbd5e1; overflow-x: hidden; }
+        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: #cbd5e1; overflow-x: hidden; scroll-behavior: smooth; }
         .mesh-bg {
             position: fixed; inset: 0; z-index: -10;
             background: radial-gradient(at 0% 0%, rgba(0, 74, 124, 0.4) 0, transparent 50%),
@@ -25,8 +22,6 @@
             -webkit-text-fill-color: transparent;
             font-style: italic;
             display: inline-block;
-            padding-right: 40px;
-            margin-right: -40px;
         }
         .bento-card {
             background: rgba(255, 255, 255, 0.05);
@@ -47,11 +42,11 @@
         }
         .btn-gradient:hover { transform: scale(1.05); box-shadow: 0 10px 15px -3px rgba(255, 126, 181, 0.4); }
         input, textarea { background: rgba(255, 255, 255, 0.05) !important; border: 1px solid rgba(255, 255, 255, 0.1) !important; color: white !important; }
-        input:focus, textarea:focus { border-color: #c084fc !important; outline: none; }
+        input:focus, textarea:focus { border-color: #ff7eb9 !important; outline: none; }
         .whatsapp-btn {
             position: fixed; bottom: 2rem; right: 2rem; z-index: 100;
             background-color: #25d366; width: 4rem; height: 4rem;
-            border-radius: 1.5rem; display: flex; items-center: center; justify-content: center;
+            border-radius: 1.5rem; display: flex; align-items: center; justify-content: center;
             box-shadow: 0 20px 25px -5px rgba(16, 185, 129, 0.3); transition: all 0.3s;
         }
         .whatsapp-btn:hover { transform: scale(1.1) rotate(10deg); }
@@ -60,11 +55,9 @@
 <body>
     <div class="mesh-bg"></div>
 
-    <!-- Redes sociales / Logo Instagram (Hidden for web, available for you) -->
-    
     <nav class="fixed top-6 left-0 right-0 z-50 px-6">
         <div class="max-w-7xl mx-auto flex items-center justify-between bg-white/5 backdrop-blur-xl border border-white/10 px-8 h-16 rounded-full shadow-2xl">
-            <div class="text-xl md:text-2xl font-black text-white italic flex items-center pr-12">
+            <div class="text-xl md:text-2xl font-black text-white italic flex items-center">
                 DM<span class="accent-text ml-2">SOLUCIONES</span>
             </div>
             <a href="https://wa.me/5492227516259" class="bg-[#ff7eb9] text-[#0f172a] px-6 py-2 rounded-full font-black text-xs uppercase tracking-tight">¡Hablemos!</a>
@@ -72,9 +65,9 @@
     </nav>
 
     <main class="pt-32 pb-20 px-4 md:px-6 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-4">
-        <!-- Hero Card -->
+        
         <div class="md:col-span-4 lg:col-span-4 bento-card p-10 flex flex-col justify-center relative overflow-hidden">
-            <span class="inline-block px-3 py-1 rounded-full bg-cyan-400/20 text-[#7dd3fc] text-[10px] font-black uppercase mb-6 w-fit">Ingeniería Industrial 4.0</span>
+            <span class="inline-block px-3 py-1 rounded-full bg-cyan-400/20 text-[#7dd3fc] text-[10px] font-black uppercase mb-6 w-fit tracking-widest">Ingeniería Industrial 4.0</span>
             <h1 class="text-5xl md:text-7xl font-black text-white leading-none tracking-tighter mb-6 italic">Eficiencia <br><span class="accent-text">Estratégica.</span></h1>
             <p class="text-lg text-slate-400 max-w-lg mb-8 leading-relaxed font-medium">Transformando complejidad en rentabilidad mediante automatización inteligente.</p>
             <div class="flex gap-4">
@@ -82,14 +75,12 @@
             </div>
         </div>
 
-        <!-- Logo Card -->
         <div class="md:col-span-2 lg:col-span-2 bento-card bg-purple-500/10 flex items-center justify-center p-12">
             <div class="w-40 h-40 bg-[#c084fc] rounded-full flex items-center justify-center shadow-2xl shadow-purple-500/40">
                 <div class="text-3xl font-black text-white italic">DM</div>
             </div>
         </div>
 
-        <!-- Data Card -->
         <div class="md:col-span-2 lg:col-span-3 bento-card p-8 flex flex-col justify-between border-l-4 border-cyan-400">
             <div class="flex justify-between items-start">
                 <i data-lucide="bar-chart-3" class="text-[#7dd3fc] w-8 h-8"></i>
@@ -97,67 +88,67 @@
             </div>
             <div>
                 <h3 class="text-xl font-black text-white mb-2">Reducción de Errores</h3>
-                <p class="text-slate-400 text-xs">Mediante flujos automatizados a medida.</p>
+                <p class="text-slate-400 text-sm">Flujos automatizados a medida.</p>
             </div>
         </div>
 
-        <!-- Services -->
         <div class="md:col-span-3 lg:col-span-1 bento-card p-6 border-b-4 border-yellow-400">
             <i data-lucide="pie-chart" class="text-yellow-400 w-6 h-6 mb-4"></i>
             <h3 class="text-lg font-black text-white italic mb-2">BI & Analytics</h3>
-            <p class="text-slate-400 text-[10px]">Dashboards dinámicos en Power BI para control de KPIs.</p>
+            <p class="text-slate-400 text-[10px]">Dashboards en Power BI.</p>
         </div>
 
         <div class="md:col-span-3 lg:col-span-1 bento-card p-6 border-b-4 border-purple-400">
             <i data-lucide="monitor" class="text-purple-400 w-6 h-6 mb-4"></i>
             <h3 class="text-lg font-black text-white italic mb-2">Sistemas Web</h3>
-            <p class="text-slate-400 text-[10px]">Herramientas a medida para gestión operativa.</p>
+            <p class="text-slate-400 text-[10px]">Gestión operativa a medida.</p>
         </div>
 
         <div class="md:col-span-6 lg:col-span-1 bento-card p-6 border-t-4 border-cyan-400">
             <i data-lucide="brain" class="text-cyan-400 w-6 h-6 mb-4"></i>
             <h3 class="text-lg font-black text-white italic mb-2">Procesos Lean</h3>
-            <p class="text-slate-400 text-[10px]">Optimización bajo metodologías ágiles.</p>
+            <p class="text-slate-400 text-[10px]">Optimización ágil.</p>
         </div>
 
-        <!-- Contact Form Card -->
-<form action="https://api.web3forms.com/submit" method="POST" class="grid md:grid-cols-2 gap-6">
-    
-    <input type="hidden" name="access_key" value="2606d4e2-a0c4-42db-bcc5-5153cb739353">
-    
-    <input type="hidden" name="from_name" value="DMSoluciones Web">
-    <input type="hidden" name="subject" value="Nueva consulta de cliente">
-    
-    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+        <div id="contacto" class="md:col-span-6 lg:col-span-6 bento-card p-10 mt-10 md:p-16 border-t-8 border-purple-400">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-black text-white tracking-tighter italic mb-4">¿Hablamos de tu <span class="accent-text">Próximo Paso?</span></h2>
+            </div>
 
-    <div class="space-y-2">
-        <label class="text-[10px] font-black tracking-widest text-slate-500 uppercase ml-4">Nombre Completo</label>
-        <input type="text" name="name" required placeholder="Nombre" 
-               class="w-full px-6 py-4 rounded-2xl font-bold bg-white/5 border border-white/10 text-white focus:outline-none focus:border-purple-400 transition-all placeholder:text-slate-600">
-    </div>
+            <form action="https://formsubmit.co/moyadelina2@gmail.com" method="POST" class="grid md:grid-cols-2 gap-6">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_subject" value="Nueva consulta: DMSoluciones">
 
-    <div class="space-y-2">
-        <label class="text-[10px] font-black tracking-widest text-slate-500 uppercase ml-4">Email de Contacto</label>
-        <input type="email" name="email" required placeholder="nombre@empresa.com" 
-               class="w-full px-6 py-4 rounded-2xl font-bold bg-white/5 border border-white/10 text-white focus:outline-none focus:border-purple-400 transition-all placeholder:text-slate-600">
-    </div>
+                <div class="space-y-2">
+                    <label class="text-[10px] font-black tracking-widest text-slate-500 uppercase ml-4">Nombre Completo</label>
+                    <input type="text" name="name" required placeholder="Nombre" 
+                           class="w-full px-6 py-4 rounded-2xl font-bold transition-all">
+                </div>
 
-    <div class="md:col-span-2 space-y-2">
-        <label class="text-[10px] font-black tracking-widest text-slate-500 uppercase ml-4">Tu Desafío o Proyecto</label>
-        <textarea name="message" rows="4" required placeholder="Contame qué proceso te gustaría automatizar o mejorar..." 
-                  class="w-full px-6 py-4 rounded-2xl font-bold bg-white/5 border border-white/10 text-white focus:outline-none focus:border-purple-400 transition-all placeholder:text-slate-600"></textarea>
-    </div>
+                <div class="space-y-2">
+                    <label class="text-[10px] font-black tracking-widest text-slate-500 uppercase ml-4">Email de Contacto</label>
+                    <input type="email" name="email" required placeholder="nombre@empresa.com" 
+                           class="w-full px-6 py-4 rounded-2xl font-bold transition-all">
+                </div>
 
-    <button type="submit" 
-            class="md:col-span-2 w-full bg-white text-[#0f172a] py-5 rounded-2xl font-black text-lg uppercase tracking-widest transition-all hover:bg-[#ff7eb9] hover:text-white active:scale-95 shadow-xl">
-        Enviar Propuesta
-    </button>
-</form>
+                <div class="md:col-span-2 space-y-2">
+                    <label class="text-[10px] font-black tracking-widest text-slate-500 uppercase ml-4">Tu Desafío</label>
+                    <textarea name="message" rows="4" required placeholder="Contame tu proyecto..." 
+                              class="w-full px-6 py-4 rounded-2xl font-bold transition-all"></textarea>
+                </div>
 
-    <footer class="py-20 border-t border-white/5 opacity-50">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] font-black tracking-[0.3em]">
-            <div class="text-white italic">DM<span class="accent-text">SOLUCIONES</span></div>
-            <div class="text-center md:text-right">BUENOS AIRES, AR • MOYADELFINA2@GMAIL.COM</div>
+                <button type="submit" 
+                        class="md:col-span-2 w-full bg-white text-[#0f172a] py-5 rounded-2xl font-black text-lg uppercase tracking-widest transition-all hover:bg-[#ff7eb9] hover:text-white active:scale-95 shadow-xl">
+                    Enviar Mensaje
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <footer class="py-10 border-t border-white/5 opacity-50">
+        <div class="max-w-7xl mx-auto px-6 text-center text-[10px] font-black tracking-[0.3em]">
+            MOYADELFINA2@GMAIL.COM
         </div>
     </footer>
 
@@ -166,7 +157,6 @@
     </a>
 
     <script>
-        // Initialize Icons
         lucide.createIcons();
     </script>
 </body>
