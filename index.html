@@ -97,7 +97,7 @@
             </div>
             <div>
                 <h3 class="text-xl font-black text-white mb-2">Reducción de Errores</h3>
-                <p class="text-slate-400 text-xs">Mediante flujos automatizados en Python y Power Automate.</p>
+                <p class="text-slate-400 text-xs">Mediante flujos automatizados a medida.</p>
             </div>
         </div>
 
@@ -121,27 +121,42 @@
         </div>
 
         <!-- Contact Form Card -->
-        <div id="contacto" class="md:col-span-6 lg:col-span-6 bento-card p-10 mt-10 md:p-16 border-t-8 border-purple-400">
-            <div class="text-center mb-12">
-                <h2 class="text-4xl font-black text-white tracking-tighter italic mb-4">Conversemos <span class="accent-text">Digitalmente</span></h2>
-            </div>
-            <form action="https://formsubmit.co/moyadelfina2@gmail.com" method="POST" class="grid md:grid-cols-2 gap-6">
-                <div class="space-y-2">
-                    <label class="text-[10px] font-black tracking-widest text-slate-500 uppercase ml-4">Nombre</label>
-                    <input type="text" name="name" required placeholder="Delfina Moya" class="w-full px-6 py-4 rounded-2xl font-bold">
-                </div>
-                <div class="space-y-2">
-                    <label class="text-[10px] font-black tracking-widest text-slate-500 uppercase ml-4">Email</label>
-                    <input type="email" name="email" required placeholder="hola@empresa.com" class="w-full px-6 py-4 rounded-2xl font-bold">
-                </div>
-                <div class="md:col-span-2 space-y-2">
-                    <label class="text-[10px] font-black tracking-widest text-slate-500 uppercase ml-4">Mensaje</label>
-                    <textarea name="message" rows="4" required placeholder="Contame tu desafío..." class="w-full px-6 py-4 rounded-2xl font-bold"></textarea>
-                </div>
-                <button type="submit" class="md:col-span-2 w-full bg-white text-[#0f172a] py-5 rounded-2xl font-black text-lg uppercase tracking-widest transition-colors hover:bg-[#c084fc] hover:text-white">Enviar Mensaje</button>
-            </form>
+<div id="contacto" class="md:col-span-6 lg:col-span-6 bento-card p-10 mt-10 md:p-16 border-t-8 border-purple-400">
+    <div class="text-center mb-12">
+        <h2 class="text-4xl font-black text-white tracking-tighter italic mb-4">¿Hablamos de tu <span class="accent-text">Próximo Paso?</span></h2>
+        <p class="text-slate-400 font-medium">Analicemos cómo la ingeniería de datos puede optimizar tu estructura actual.</p>
+    </div>
+
+    <form action="https://formsubmit.co/moyadelfina2@gmail.com" method="POST" class="grid md:grid-cols-2 gap-6">
+        
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_subject" value="Nueva consulta: DMSoluciones Web">
+        <input type="hidden" name="_template" value="table">
+
+        <div class="space-y-2">
+            <label class="text-[10px] font-black tracking-widest text-slate-500 uppercase ml-4">Nombre Completo</label>
+            <input type="text" name="name" required placeholder="Ej. Delfina Moya" 
+                   class="w-full px-6 py-4 rounded-2xl font-bold bg-white/5 border border-white/10 text-white focus:outline-none focus:border-purple-400 transition-all">
         </div>
-    </main>
+
+        <div class="space-y-2">
+            <label class="text-[10px] font-black tracking-widest text-slate-500 uppercase ml-4">Email de Contacto</label>
+            <input type="email" name="email" required placeholder="nombre@empresa.com" 
+                   class="w-full px-6 py-4 rounded-2xl font-bold bg-white/5 border border-white/10 text-white focus:outline-none focus:border-purple-400 transition-all">
+        </div>
+
+        <div class="md:col-span-2 space-y-2">
+            <label class="text-[10px] font-black tracking-widest text-slate-500 uppercase ml-4">Tu Desafío o Proyecto</label>
+            <textarea name="message" rows="4" required placeholder="Contame qué proceso te gustaría automatizar o mejorar..." 
+                      class="w-full px-6 py-4 rounded-2xl font-bold bg-white/5 border border-white/10 text-white focus:outline-none focus:border-purple-400 transition-all"></textarea>
+        </div>
+
+        <button type="submit" 
+                class="md:col-span-2 w-full bg-white text-[#0f172a] py-5 rounded-2xl font-black text-lg uppercase tracking-widest transition-all hover:bg-[#c084fc] hover:text-white active:scale-95">
+            Enviar Propuesta
+        </button>
+    </form>
+</div>
 
     <footer class="py-20 border-t border-white/5 opacity-50">
         <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] font-black tracking-[0.3em]">
