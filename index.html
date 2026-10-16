@@ -1,710 +1,630 @@
-<style>
-    :root {
-        --bg-page: #f8f6f9;
-        --purple-main: #9b51e0;
-        --purple-light: #d8b4fe;
-        --purple-pastel: #eedbfd;
-        --purple-dark: #582186;
-        --purple-gradient: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
-        --blob-bg: #ece6f2;
-        --card-bg: #ffffff;
-        --text-dark: #221f26;
-        --text-muted: #665f70;
-        --border-soft: #ebdff5;
-        --radius: 20px;
-    }
-
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        scroll-behavior: smooth;
-    }
-
-    body {
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        background-color: var(--bg-page);
-        color: var(--text-dark);
-        line-height: 1.6;
-        overflow-x: hidden;
-        position: relative;
-    }
-
-    /* Formas orgánicas de fondo (Blobs estilo Instagram feed) */
-    .bg-blob {
-        position: absolute;
-        border-radius: 50%;
-        filter: blur(80px);
-        z-index: -1;
-        opacity: 0.55;
-    }
-
-    .blob-1 {
-        width: 450px;
-        height: 450px;
-        background: #d8b4fe;
-        top: -100px;
-        right: -100px;
-    }
-
-    .blob-2 {
-        width: 500px;
-        height: 500px;
-        background: #fbcfe8;
-        top: 40%;
-        left: -150px;
-    }
-
-    .blob-3 {
-        width: 400px;
-        height: 400px;
-        background: #e9d5ff;
-        bottom: 0;
-        right: -100px;
-    }
-
-    /* Header / Navbar Glassmorphism */
-    header {
-        background: rgba(248, 246, 249, 0.85);
-        backdrop-filter: blur(12px);
-        border-bottom: 1px solid var(--border-soft);
-        padding: 1rem 2.5rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-    }
-
-    .brand-container {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-    }
-
-    /* Espacio para el logo circular */
-    .logo-frame {
-        width: 52px;
-        height: 52px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, #d8b4fe, #a855f7);
-        padding: 3px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 4px 12px rgba(155, 81, 224, 0.25);
-        transition: transform 0.3s ease;
-    }
-
-    .logo-frame:hover {
-        transform: scale(1.05) rotate(3deg);
-    }
-
-    .logo-frame img {
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-        object-fit: cover;
-    }
-
-    .brand-text h1 {
-        font-size: 1.15rem;
-        font-weight: 800;
-        color: var(--text-dark);
-        letter-spacing: -0.3px;
-    }
-
-    .brand-text span {
-        font-size: 0.8rem;
-        color: var(--purple-main);
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.8px;
-    }
-
-    nav {
-        display: flex;
-        align-items: center;
-        gap: 1.5rem;
-    }
-
-    nav a {
-        text-decoration: none;
-        color: var(--text-dark);
-        font-weight: 600;
-        font-size: 0.95rem;
-        transition: color 0.2s ease;
-    }
-
-    nav a:hover {
-        color: var(--purple-main);
-    }
-
-    .btn-header {
-        background: var(--purple-gradient);
-        color: white !important;
-        padding: 0.6rem 1.4rem;
-        border-radius: 50px;
-        box-shadow: 0 4px 14px rgba(168, 85, 247, 0.35);
-        transition: all 0.3s ease !important;
-    }
-
-    .btn-header:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(168, 85, 247, 0.5);
-    }
-
-    /* Hero Section */
-    .hero {
-        max-width: 1100px;
-        margin: 2.5rem auto 1rem auto;
-        padding: 3.5rem 2rem;
-        text-align: center;
-        position: relative;
-    }
-
-    .hero-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        background: var(--purple-pastel);
-        color: var(--purple-dark);
-        padding: 0.5rem 1.2rem;
-        border-radius: 50px;
-        font-size: 0.85rem;
-        font-weight: 700;
-        margin-bottom: 1.5rem;
-        border: 1px solid var(--purple-light);
-    }
-
-    .hero h2 {
-        font-size: 3rem;
-        font-weight: 800;
-        letter-spacing: -1px;
-        color: var(--text-dark);
-        line-height: 1.2;
-        margin-bottom: 1rem;
-    }
-
-    .hero h2 span {
-        background: var(--purple-gradient);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-
-    .hero p {
-        font-size: 1.2rem;
-        color: var(--text-muted);
-        max-width: 720px;
-        margin: 0 auto 2rem auto;
-    }
-
-    /* Main Container */
-    .container {
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 2rem 1.5rem 5rem 1.5rem;
-    }
-
-    .section-title {
-        text-align: center;
-        margin-bottom: 3rem;
-    }
-
-    .section-title h3 {
-        font-size: 2.2rem;
-        font-weight: 800;
-        letter-spacing: -0.5px;
-    }
-
-    .section-title p {
-        color: var(--text-muted);
-        font-size: 1.05rem;
-        margin-top: 0.4rem;
-    }
-
-    /* Cards Grid */
-    .cards-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-        gap: 2rem;
-        margin-bottom: 5rem;
-    }
-
-    .card {
-        background: var(--card-bg);
-        border-radius: var(--radius);
-        padding: 2.5rem 2rem;
-        border: 1px solid var(--border-soft);
-        box-shadow: 0 10px 30px rgba(155, 81, 224, 0.05);
-        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        position: relative;
-        overflow: hidden;
-    }
-
-    .card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 5px;
-        background: var(--purple-gradient);
-        opacity: 0;
-        transition: opacity 0.3s;
-    }
-
-    .card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 15px 35px rgba(155, 81, 224, 0.12);
-        border-color: var(--purple-light);
-    }
-
-    .card:hover::before {
-        opacity: 1;
-    }
-
-    .card-icon-box {
-        width: 60px;
-        height: 60px;
-        border-radius: 16px;
-        background: var(--purple-pastel);
-        color: var(--purple-main);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.6rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .card h4 {
-        font-size: 1.3rem;
-        font-weight: 700;
-        margin-bottom: 0.8rem;
-    }
-
-    .card p {
-        color: var(--text-muted);
-        font-size: 0.98rem;
-        line-height: 1.6;
-    }
-
-    /* Sección Consultoría Destacada */
-    .consulting-banner {
-        background: linear-gradient(135deg, #ffffff 0%, #f7effd 100%);
-        border: 2px solid var(--purple-light);
-        border-radius: 28px;
-        padding: 3.5rem 3rem;
-        margin-bottom: 5rem;
-        position: relative;
-        box-shadow: 0 15px 35px rgba(155, 81, 224, 0.08);
-        display: grid;
-        grid-template-columns: 1.2fr 0.8fr;
-        gap: 2.5rem;
-        align-items: center;
-    }
-
-    .consulting-text h3 {
-        font-size: 2.1rem;
-        font-weight: 800;
-        margin-bottom: 1rem;
-        line-height: 1.25;
-    }
-
-    .consulting-text p {
-        color: var(--text-muted);
-        font-size: 1.05rem;
-        margin-bottom: 1.8rem;
-    }
-
-    .check-list {
-        list-style: none;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 0.8rem;
-        margin-bottom: 2rem;
-    }
-
-    .check-list li {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-weight: 600;
-        font-size: 0.95rem;
-        color: var(--text-dark);
-    }
-
-    .check-list li i {
-        color: var(--purple-main);
-        background: var(--purple-pastel);
-        width: 24px;
-        height: 24px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 0.75rem;
-    }
-
-    .btn-action {
-        display: inline-block;
-        background: var(--purple-gradient);
-        color: white;
-        padding: 0.9rem 2rem;
-        border-radius: 50px;
-        font-weight: 700;
-        text-decoration: none;
-        box-shadow: 0 6px 20px rgba(168, 85, 247, 0.35);
-        transition: all 0.3s ease;
-    }
-
-    .btn-action:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 25px rgba(168, 85, 247, 0.5);
-    }
-
-    .consulting-card-accent {
-        background: var(--purple-gradient);
-        padding: 2.5rem;
-        border-radius: 20px;
-        color: white;
-        text-align: center;
-        box-shadow: 0 10px 30px rgba(168, 85, 247, 0.3);
-    }
-
-    .consulting-card-accent i {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-    }
-
-    .consulting-card-accent h4 {
-        font-size: 1.4rem;
-        font-weight: 800;
-        margin-bottom: 0.5rem;
-    }
-
-    .consulting-card-accent p {
-        font-size: 0.95rem;
-        opacity: 0.9;
-    }
-
-    /* Sección Contacto & Formulario */
-    .contact-wrapper {
-        background: var(--card-bg);
-        border-radius: 28px;
-        padding: 3rem;
-        border: 1px solid var(--border-soft);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-    }
-
-    .contact-grid {
-        display: grid;
-        grid-template-columns: 1fr 1.2fr;
-        gap: 3rem;
-        margin-top: 2rem;
-    }
-
-    .social-links {
-        display: flex;
-        flex-direction: column;
-        gap: 1.2rem;
-    }
-
-    .social-btn {
-        display: flex;
-        align-items: center;
-        gap: 1.2rem;
-        padding: 1.2rem 1.5rem;
-        background: var(--bg-page);
-        border: 1px solid var(--border-soft);
-        border-radius: 16px;
-        text-decoration: none;
-        color: var(--text-dark);
-        transition: all 0.3s ease;
-    }
-
-    .social-btn:hover {
-        transform: translateX(6px);
-        border-color: var(--purple-light);
-        background: #ffffff;
-        box-shadow: 0 8px 20px rgba(155, 81, 224, 0.1);
-    }
-
-    .social-btn i {
-        font-size: 1.8rem;
-        width: 45px;
-        height: 45px;
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-    }
-
-    .icon-ig { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
-    .icon-wa { background: #25d366; }
-    .icon-mail { background: var(--purple-main); }
-
-    .social-info h5 {
-        font-size: 1rem;
-        font-weight: 700;
-    }
-
-    .social-info p {
-        font-size: 0.85rem;
-        color: var(--text-muted);
-    }
-
-    /* Formulario con Onda */
-    .contact-form {
-        display: flex;
-        flex-direction: column;
-        gap: 1.2rem;
-    }
-
-    .form-group {
-        display: flex;
-        flex-direction: column;
-        gap: 0.4rem;
-    }
-
-    .form-group label {
-        font-size: 0.9rem;
-        font-weight: 700;
-        color: var(--text-dark);
-    }
-
-    .form-group input,
-    .form-group textarea {
-        padding: 0.9rem 1.2rem;
-        border-radius: 14px;
-        border: 1px solid var(--border-soft);
-        background: var(--bg-page);
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        font-size: 0.95rem;
-        outline: none;
-        transition: all 0.2s ease;
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus {
-        border-color: var(--purple-main);
-        background: #ffffff;
-        box-shadow: 0 0 0 4px rgba(155, 81, 224, 0.12);
-    }
-
-    .btn-submit {
-        background: var(--purple-gradient);
-        color: white;
-        padding: 1rem;
-        border: none;
-        border-radius: 50px;
-        font-weight: 700;
-        font-size: 1rem;
-        cursor: pointer;
-        box-shadow: 0 6px 20px rgba(168, 85, 247, 0.35);
-        transition: all 0.3s ease;
-        margin-top: 0.5rem;
-    }
-
-    .btn-submit:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 25px rgba(168, 85, 247, 0.5);
-    }
-
-    /* Footer */
-    footer {
-        border-top: 1px solid var(--border-soft);
-        padding: 2.5rem 1.5rem;
-        text-align: center;
-        background: rgba(255, 255, 255, 0.6);
-        color: var(--text-muted);
-        font-size: 0.9rem;
-        font-weight: 500;
-    }
-
-    footer a {
-        color: var(--purple-main);
-        text-decoration: none;
-        font-weight: 700;
-    }
-
-    @media (max-width: 900px) {
-        .consulting-banner { grid-template-columns: 1fr; text-align: center; }
-        .check-list { justify-content: center; }
-        .contact-grid { grid-template-columns: 1fr; }
-        .hero h2 { font-size: 2.2rem; }
-        header { padding: 1rem; }
-        nav { display: none; }
-    }
-</style>
-
-
-<!-- Blobs orgánicos de fondo -->
-<div class="bg-blob blob-1"></div>
-<div class="bg-blob blob-2"></div>
-<div class="bg-blob blob-3"></div>
-
-<!-- Header con alineación y logo -->
-<header>
-    <div class="brand-container">
-        <div class="logo-frame">
-            <!-- Reemplaza 'logo.png' por el nombre exacto del archivo de tu logo en GitHub -->
-            <img src="1.png" alt="Logo DM Ingeniería" onerror="this.src='https://via.placeholder.com/100/9b51e0/ffffff?text=DM'">
-        </div>
-        <div class="brand-text">
-            <h1>dm.ingenieria.ind</h1>
-            <span>Punt(o) de Equilibrio</span>
-        </div>
-    </div>
-
-    <nav>
-        <a href="#inicio">Inicio</a>
-        <a href="#secciones">Qué vas a ver</a>
-        <a href="#consultoria">Consultoría</a>
-        <a href="#contacto" class="btn-header">Contacto</a>
-    </nav>
-</header>
-
-<!-- Hero / Sección de bienvenida -->
-<section id="inicio" class="hero">
-    <div class="hero-badge">
-        <i class="fa-solid fa-bolt"></i> Ingeniera Industrial & Optimización
-    </div>
-    <h2>Encontrá el verdadero <br><span>Punt(o) de Equilibrio</span> de tu proceso</h2>
-    <p>Un canal dedicado a la mejora continua, metodologías de ingeniería industrial y soluciones estratégicas para optimizar recursos y potenciar proyectos.</p>
-</section>
-
-<!-- Contenido Principal -->
-<main class="container">
-
-    <!-- Secciones Explicativas (Estilo tarjetas dinámicas) -->
-    <section id="secciones">
-        <div class="section-title">
-            <h3>¿Qué vas a encontrar acá?</h3>
-            <p>Contenido técnico bajado a la práctica para impulsar la eficiencia</p>
-        </div>
-
-        <div class="cards-grid">
-            
-            <div class="card">
-                <div class="card-icon-box">
-                    <i class="fa-solid fa-screwdriver-wrench"></i>
-                </div>
-                <h4>Herramientas para Optimizar</h4>
-                <p>Metodologías, frameworks de trabajo y buenas prácticas aplicadas a la estandarización y agilización de procesos productivos y de servicio.</p>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dm.ingenieria.ind | Punt(o) de Equilibrio</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #fdfbfd;
+            --primary-purple: #7c3aed;
+            --primary-gradient: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);
+            --accent-lilac: #e9d5ff;
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --text-dark: #2d2638;
+            --text-muted: #6b6475;
+            --border-color: #f3e8ff;
+            --shadow-soft: 0 10px 30px -5px rgba(124, 58, 237, 0.08);
+            --shadow-hover: 0 20px 40px -10px rgba(124, 58, 237, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-dark);
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Formas orgánicas de fondo (Blobs estilo Instagram) */
+        .blob-1 {
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(233, 213, 255, 0.6) 0%, rgba(253, 251, 253, 0) 70%);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .blob-2 {
+            position: absolute;
+            top: 40%;
+            left: -150px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(243, 232, 255, 0.5) 0%, rgba(253, 251, 253, 0) 70%);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        /* Header / Navbar */
+        header {
+            background: rgba(253, 251, 253, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .logo-frame {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            padding: 2px;
+            background: var(--primary-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(124, 58, 237, 0.15);
+        }
+
+        .logo-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            background: white;
+        }
+
+        .brand-text h1 {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            letter-spacing: -0.3px;
+        }
+
+        .brand-text p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            margin-left: 2rem;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--primary-purple);
+        }
+
+        .btn-main {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 0.75rem 1.6rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.25);
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-main:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(124, 58, 237, 0.35);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            max-width: 1050px;
+            margin: 3rem auto 1rem auto;
+            padding: 3.5rem 2.5rem;
+            background: var(--card-bg);
+            border-radius: 24px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-soft);
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: #f3e8ff;
+            color: var(--primary-purple);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero-section h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-section p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Container Principal */
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--text-dark);
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2.2rem;
+            box-shadow: var(--shadow-soft);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: #d8b4fe;
+        }
+
+        .card-icon {
+            width: 52px;
+            height: 52px;
+            background: #f3e8ff;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.2rem;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: var(--text-dark);
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Consultoría Banner */
+        .consulting-banner {
+            background: linear-gradient(135deg, #ffffff 0%, #faf5ff 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 3.5rem 3rem;
+            margin-bottom: 4rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .consulting-banner h3 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 0.8rem;
+        }
+
+        .consulting-banner p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 750px;
+            margin-bottom: 2rem;
+        }
+
+        .consulting-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .feature-item {
+            background: white;
+            padding: 1rem 1.2rem;
+            border-radius: 14px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--primary-purple);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+
+        /* Sección de Contacto */
+        .contact-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+
+        /* Tarjetas de Canales */
+        .contact-channels {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .channel-card {
+            background: white;
+            padding: 1.1rem 1.4rem;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .channel-card:hover {
+            transform: translateY(-3px);
+            border-color: #c084fc;
+            box-shadow: 0 8px 20px rgba(124, 58, 237, 0.08);
+        }
+
+        .icon-wrapper {
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .icon-wrapper.instagram {
+            background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            color: white;
+        }
+
+        .icon-wrapper.whatsapp {
+            background-color: #25d366;
+            color: white;
+        }
+
+        .icon-wrapper.email {
+            background: var(--primary-gradient);
+            color: white;
+        }
+
+        .channel-info h4 {
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .channel-info p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Formulario de Contacto */
+        .contact-form {
+            background: white;
+            padding: 2.2rem;
+            border-radius: 18px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .form-group input, 
+        .form-group textarea {
+            padding: 0.85rem 1rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.95rem;
+            background-color: #fcfbfe;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .form-group input:focus, 
+        .form-group textarea:focus {
+            border-color: var(--primary-purple);
+            box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 2rem;
+        }
+
+        footer a {
+            color: var(--primary-purple);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 1rem 1.5rem; }
+            nav { display: none; }
+            .hero-section { margin: 1.5rem 1rem; padding: 2rem 1.5rem; }
+            .container { padding: 1.5rem 1rem; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .consulting-banner { padding: 2rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="blob-1"></div>
+    <div class="blob-2"></div>
+
+    <!-- Header / Navbar -->
+    <header>
+        <div class="brand-container">
+            <div class="logo-frame">
+                <!-- Tu logo subido al repositorio -->
+                <img src="logo.png" alt="Punt(o) de Equilibrio Logo" class="logo-img">
             </div>
-
-            <div class="card">
-                <div class="card-icon-box">
-                    <i class="fa-solid fa-magnifying-glass-chart"></i>
-                </div>
-                <h4>¿Qué hace un Ing. Industrial?</h4>
-                <p>Desmitificamos el rol profesional: desde la organización de tiempos hasta el control de calidad, tableros de datos y gestión de cadenas de valor.</p>
+            <div class="brand-text">
+                <h1>dm.ingenieria.ind</h1>
+                <p>Punt(o) de Equilibrio</p>
             </div>
-
-            <div class="card">
-                <div class="card-icon-box">
-                    <i class="fa-solid fa-lightbulb"></i>
-                </div>
-                <h4>Experiencias & Casos</h4>
-                <p>Aprendizajes reales del campo profesional, vivencias en planta y reflexiones orientadas al crecimiento continuo.</p>
-            </div>
-
         </div>
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#secciones">Secciones</a>
+            <a href="#consultoria">Consultoría</a>
+            <a href="#contacto" class="btn-main">Contacto</a>
+        </nav>
+    </header>
+
+    <!-- Hero / Bienvenida -->
+    <section id="inicio" class="hero-section">
+        <div class="hero-badge">Ingeniería Industrial & Optimización</div>
+        <h2>Explicando mi Página</h2>
+        <p>Un espacio dedicado a compartir herramientas técnicas, metodologías de mejora continua y experiencias reales para potenciar procesos y encontrar el verdadero <strong>Punt(o) de Equilibrio</strong>.</p>
     </section>
 
-    <!-- Sección Destacada de Consultoría -->
-    <section id="consultoria" class="consulting-banner">
-        <div class="consulting-text">
-            <h3>¿Querés evaluar una consultoría personalizada?</h3>
-            <p>Diagnosticamos y rediseñamos los flujos de trabajo de tu pyme o proyecto para eliminar desperdicios, reducir tiempos muertos e incrementar la productividad.</p>
-            
-            <ul class="check-list">
-                <li><i class="fa-solid fa-check"></i> Mapeo de Procesos</li>
-                <li><i class="fa-solid fa-check"></i> Detección de Cuellos de Botella</li>
-                <li><i class="fa-solid fa-check"></i> Indicadores (KPIs)</li>
-                <li><i class="fa-solid fa-check"></i> Estandarización Eficiente</li>
-            </ul>
+    <main class="container">
 
-            <a href="#contacto" class="btn-action">Solicitar Diagnóstico</a>
-        </div>
+        <!-- Secciones Explicativas con Iconos SVG Integrados -->
+        <section id="secciones">
+            <div class="section-title">
+                <h2>¿Qué vas a encontrar acá?</h2>
+                <p>Contenido técnico bajado a la práctica para impulsar la eficiencia</p>
+            </div>
 
-        <div class="consulting-card-accent">
-            <i class="fa-solid fa-chart-line"></i>
-            <h4>Transformá tus Operaciones</h4>
-            <p>Aumentá la eficiencia y ordená tu trabajo con un enfoque analítico y ágil.</p>
-        </div>
-    </section>
-
-    <!-- Sección Contacto y Formulario -->
-    <section id="contacto" class="contact-wrapper">
-        <div class="section-title" style="margin-bottom: 1.5rem;">
-            <h3>Hablemos</h3>
-            <p>Escribime si te interesa evaluar una consultoria o que forme parte de tu equipo!</p>
-        </div>
-
-        <div class="contact-grid">
-            
-            <!-- Redes / Canales de comunicación con Iconos -->
-            <div class="social-links">
+            <div class="cards-grid">
                 
-                <a href="https://www.instagram.com/dm.ingenieria.ind/" target="_blank" class="social-btn">
-                    <i class="fa-brands fa-instagram icon-ig"></i>
-                    <div class="social-info">
-                        <h5>Instagram</h5>
-                        <p>@dm.ingenieria.ind</p>
+                <!-- Tarjeta 1 -->
+                <div class="card">
+                    <div class="card-icon">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                        </svg>
                     </div>
-                </a>
+                    <h3>Herramientas para Optimizar</h3>
+                    <p>Metodologías, frameworks de trabajo y buenas prácticas aplicadas a la estandarización y agilización de procesos productivos y de servicio.</p>
+                </div>
 
-                <!-- Reemplaza el enlace con tu número de WhatsApp real -->
-                <a href="https://wa.me/5492227516259" target="_blank" class="social-btn">
-                    <i class="fa-brands fa-whatsapp icon-wa"></i>
-                    <div class="social-info">
-                        <h5>WhatsApp Directo</h5>
-                        <p>Envía un mensaje rápido</p>
+                <!-- Tarjeta 2 -->
+                <div class="card">
+                    <div class="card-icon">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
                     </div>
-                </a>
+                    <h3>¿Qué hace un Ing. Industrial?</h3>
+                    <p>Desmitificamos el rol profesional: desde la organización de tiempos hasta el control de calidad, tableros de datos y gestión de cadenas de valor.</p>
+                </div>
 
-                <!-- Reemplaza el correo por el tuyo -->
-                <a href="mailto:moyadelfina2@gmail.com class="social-btn">
-                    <i class="fa-regular fa-envelope icon-mail"></i>
-                    <div class="social-info">
-                        <h5>Correo Electrónico</h5>
-                        <p>Consultas y proyectos</p>
+                <!-- Tarjeta 3 -->
+                <div class="card">
+                    <div class="card-icon">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                        </svg>
                     </div>
-                </a>
+                    <h3>Experiencias & Casos</h3>
+                    <p>Aprendizajes reales del campo profesional, vivencias en planta y reflexiones orientadas al crecimiento continuo.</p>
+                </div>
 
             </div>
+        </section>
 
-            <!-- Formulario Interactivo -->
-            <form class="contact-form" action="https://formsubmit.co/moyadelfina2@gmail.com" method="POST">
-                <div class="form-group">
-                    <label for="nombre">Nombre o Empresa</label>
-                    <input type="text" id="nombre" name="nombre" placeholder="¿Cómo te llamás?" required>
+        <!-- Sección Consultoría -->
+        <section id="consultoria" class="consulting-banner">
+            <h3>¿Querés evaluar una consultoría?</h3>
+            <p>Analizamos la estructura y flujo operativo de tu empresa o proyecto para detectar cuellos de botella, eliminar desperdicios e implementar tableros y soluciones eficientes.</p>
+
+            <div class="consulting-features">
+                <div class="feature-item">✓ Diagnóstico de Procesos</div>
+                <div class="feature-item">✓ Mapeo de Flujos de Trabajo</div>
+                <div class="feature-item">✓ Tableros & Indicadores KPI</div>
+                <div class="feature-item">✓ Estandarización Eficiente</div>
+            </div>
+
+            <a href="#contacto" class="btn-main">Solicitar Evaluación</a>
+        </section>
+
+        <!-- Sección Contacto -->
+        <section id="contacto" class="contact-section">
+            <div class="section-title" style="text-align: left; margin-bottom: 1rem;">
+                <h2>Contacto Directo</h2>
+                <p>Escribime si te interesa evaluar una consultoría o coordinar una reunión.</p>
+            </div>
+
+            <div class="contact-grid">
+                
+                <!-- Canales Directos -->
+                <div class="contact-channels">
+                    
+                    <!-- Instagram -->
+                    <a href="https://www.instagram.com/dm.ingenieria.ind/" target="_blank" class="channel-card">
+                        <div class="icon-wrapper instagram">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </div>
+                        <div class="channel-info">
+                            <h4>Instagram</h4>
+                            <p>@dm.ingenieria.ind</p>
+                        </div>
+                    </a>
+
+                    <!-- WhatsApp -->
+                    <a href="https://wa.me/5492227516259" target="_blank" class="channel-card">
+                        <div class="icon-wrapper whatsapp">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                            </svg>
+                        </div>
+                        <div class="channel-info">
+                            <h4>WhatsApp Directo</h4>
+                            <p>Envía un mensaje rápido</p>
+                        </div>
+                    </a>
+
+                    <!-- Correo Electrónico -->
+                    <a href="mailto:moyadelfina2@gmail.com" class="channel-card">
+                        <div class="icon-wrapper email">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                        </div>
+                        <div class="channel-info">
+                            <h4>Correo Electrónico</h4>
+                            <p>moyadelfina2@gmail.com</p>
+                        </div>
+                    </a>
+
                 </div>
 
-                <div class="form-group">
-                    <label for="email">Email de Contacto</label>
-                    <input type="email" id="email" name="email" placeholder="moyadelfina2@gmail.com" required>
-                </div>
+                <!-- Formulario de Contacto -->
+                <form class="contact-form" action="https://formsubmit.co/moyadelfina2@gmail.com" method="POST">
+                    <h3 style="font-size: 1.15rem; color: var(--text-dark);">Envía un mensaje directo</h3>
+                    
+                    <div class="form-group">
+                        <label for="nombre">Nombre / Empresa</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+                    </div>
 
-                <div class="form-group">
-                    <label for="mensaje">Consulta / Proyecto de Consultoría</label>
-                    <textarea id="mensaje" name="mensaje" rows="4" placeholder="Contame sobre tu proceso o qué te gustaría evaluar..." required></textarea>
-                </div>
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico</label>
+                        <input type="email" id="email" name="email" placeholder="tu@correo.com" required>
+                    </div>
 
-                <button type="submit" class="btn-submit">Enviar Mensaje ✨</button>
-            </form>
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje / Consulta</label>
+                        <textarea id="mensaje" name="mensaje" rows="4" placeholder="¿En qué puedo ayudarte?" required></textarea>
+                    </div>
 
-        </div>
-    </section>
+                    <button type="submit" class="btn-main">Enviar Mensaje</button>
+                </form>
 
-</main>
+            </div>
+        </section>
 
-<!-- Footer -->
-<footer>
-    <p>&copy; 2026 <strong>dm.ingenieria.ind</strong> — Punt(o) de Equilibrio. Todos los derechos reservados.</p>
-</footer>
+    </main>
 
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 <strong>dm.ingenieria.ind</strong> | Punt(o) de Equilibrio</p>
+    </footer>
+
+</body>
+</html>
